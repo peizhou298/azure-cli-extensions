@@ -28,7 +28,7 @@ class PeeringAddDirectConnection(argparse._AppendAction):
         for k in properties:
             kl = k.lower()
             v = properties[k]
-            if kl == 'bandwithdinmbps':
+            if kl == 'bandwidthdinmbps':
                 d['bandwidthInMbps'] = v
             elif kl == 'sessionaddressprovider':
                 d['sessionAddressProvider'] = v
