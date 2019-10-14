@@ -25,31 +25,31 @@ class PeeringAddDirectConnection(argparse._AppendAction):
         except ValueError:
             raise CLIError('usage error: {} [KEY=VALUE ...]'.format(option_string))
         d = {}
-        for x in properties:
-            k = x[0].lower()
-            v = x[1]
-            if k == 'bandwithdinmbps':
+        for k in properties:
+            kl = k.lower()
+            v = properties[k]
+            if kl == 'bandwithdinmbps':
                 d['bandwidthInMbps'] = v
-            elif k == 'sessionaddressprovider':
+            elif kl == 'sessionaddressprovider':
                 d['sessionAddressProvider'] = v
-            elif k == 'useforpeeringservice':
+            elif kl == 'useforpeeringservice':
                 d['useForPeeringService'] = v
-            elif k == 'peeringdbfacilityid':
+            elif kl == 'peeringdbfacilityid':
                 d['peeringDBFacilityId'] = v
-            elif k == 'sessionprefixv4':
+            elif kl == 'sessionprefixv4':
                 d.setdefault('bgpSession', {})['sessionPrefixV4'] = v
-            elif k == 'sessionprefixv6':
+            elif kl == 'sessionprefixv6':
                 d.setdefault('bgpSession', {})['sessionPrefixV6'] = v
-            elif k == 'maxprefixesadvertisedv4':
+            elif kl == 'maxprefixesadvertisedv4':
                 d.setdefault('bgpSession', {})['maxPrefixesAdvertisedV4'] = v
-            elif k == 'maxprefixesadvertisedv6':
+            elif kl == 'maxprefixesadvertisedv6':
                 d.setdefault('bgpSession', {})['maxPrefixesAdvertisedV6'] = v
-            elif k == 'md5authenticationkey':
+            elif kl == 'md5authenticationkey':
                 d.setdefault('bgpSession', {})['md5AuthenticationKey'] = v
-            elif k == 'connectionidentifier':
+            elif kl == 'connectionidentifier':
                 d['connectionIdentifier'] = v
             else:
-                raise CLIError('usage error: {} is invalid'.format(x))
+                raise CLIError('usage error: {} is invalid'.format(k))
         return d
 
 
