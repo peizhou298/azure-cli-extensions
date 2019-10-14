@@ -49,7 +49,7 @@ class PeeringAddDirectConnection(argparse._AppendAction):
             elif k == 'connectionidentifier':
                 d['connectionIdentifier'] = v
             else:
-                raise CLIError('usage error: {} is invalid'.format(k))
+                raise CLIError('usage error: {} is invalid'.format(x))
         return d
 
 
