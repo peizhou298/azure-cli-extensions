@@ -60,8 +60,34 @@ class PeeringAddExchangeConnection(argparse._AppendAction):
         super(PeeringAddExchangeConnection, self).__call__(parser, namespace, action, option_string)
 
     def get_action(self, values, option_string):  # pylint: disable=no-self-use
-        #_type = values[0].lower()
-
-        # iterate through values
-        return {}
-        #raise CLIError('usage error: {} TYPE KEY [ARGS]'.format(option_string))
+        try:
+            properties = dict(x.split('=', 1) for x in values)
+        except ValueError:
+            raise CLIError('usage error: {} [KEY=VALUE ...]'.format(option_string))
+        d = {}
+        for k in properties:
+            kl = k.lower()
+            v = properties[k]
+            if kl == 'bandwidthinmbps':
+                d['bandwidthInMbps'] = v
+            elif kl == 'sessionaddressprovider':
+                d['sessionAddressProvider'] = v
+            elif kl == 'useforpeeringservice':
+                d['useForPeeringService'] = v
+            elif kl == 'peeringdbfacilityid':
+                d['peeringDBFacilityId'] = v
+            elif kl == 'sessionprefixv4':
+                d.setdefault('bgpSession', {})['sessionPrefixV4'] = v
+            elif kl == 'sessionprefixv6':
+                d.setdefault('bgpSession', {})['sessionPrefixV6'] = v
+            elif kl == 'maxprefixesadvertisedv4':
+                d.setdefault('bgpSession', {})['maxPrefixesAdvertisedV4'] = v
+            elif kl == 'maxprefixesadvertisedv6':
+                d.setdefault('bgpSession', {})['maxPrefixesAdvertisedV6'] = v
+            elif kl == 'md5authenticationkey':
+                d.setdefault('bgpSession', {})['md5AuthenticationKey'] = v
+            elif kl == 'connectionidentifier':
+                d['connectionIdentifier'] = v
+            else:
+                raise CLIError('usage error: {} is invalid'.format(k))
+        return d
