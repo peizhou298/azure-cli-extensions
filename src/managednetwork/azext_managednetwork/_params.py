@@ -45,28 +45,28 @@ def load_arguments(self, _):
         c.argument('resource_group', resource_group_name_type)
         c.argument('name', id_part=None, help='The name of the Managed Network.')
 
-    with self.argument_context('managednetwork create') as c:
+    with self.argument_context('managednetwork scope-assignment create') as c:
         c.argument('parameters', id_part=None, help='undefined')
         c.argument('scope', id_part=None, help='The base resource of the scope assignment to create. The scope can be any REST resource instance. For example, use \'/subscriptions/{subscription-id}/\' for a subscription, \'/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}\' for a resource group, and \'/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}\' for a resource.')
         c.argument('name', id_part=None, help='The name of the scope assignment to create.')
         c.argument('location', arg_type=get_location_type(self.cli_ctx))
         c.argument('assigned_managed_network', id_part=None, help='The managed network ID with scope will be assigned to.')
 
-    with self.argument_context('managednetwork update') as c:
+    with self.argument_context('managednetwork scope-assignment update') as c:
         c.argument('parameters', id_part=None, help='undefined')
         c.argument('scope', id_part=None, help='The base resource of the scope assignment to create. The scope can be any REST resource instance. For example, use \'/subscriptions/{subscription-id}/\' for a subscription, \'/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}\' for a resource group, and \'/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}\' for a resource.')
         c.argument('name', id_part=None, help='The name of the scope assignment to create.')
         c.argument('location', arg_type=get_location_type(self.cli_ctx))
         c.argument('assigned_managed_network', id_part=None, help='The managed network ID with scope will be assigned to.')
 
-    with self.argument_context('managednetwork delete') as c:
+    with self.argument_context('managednetwork scope-assignment delete') as c:
         c.argument('scope', id_part=None, help='The base resource of the scope assignment to create. The scope can be any REST resource instance. For example, use \'/subscriptions/{subscription-id}/\' for a subscription, \'/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}\' for a resource group, and \'/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}\' for a resource.')
         c.argument('name', id_part=None, help='The name of the scope assignment to create.')
 
-    with self.argument_context('managednetwork list') as c:
+    with self.argument_context('managednetwork scope-assignment list') as c:
         c.argument('scope', id_part=None, help='The base resource of the scope assignment to create. The scope can be any REST resource instance. For example, use \'/subscriptions/{subscription-id}/\' for a subscription, \'/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}\' for a resource group, and \'/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}\' for a resource.')
 
-    with self.argument_context('managednetwork show') as c:
+    with self.argument_context('managednetwork scope-assignment show') as c:
         c.argument('scope', id_part=None, help='The base resource of the scope assignment to create. The scope can be any REST resource instance. For example, use \'/subscriptions/{subscription-id}/\' for a subscription, \'/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}\' for a resource group, and \'/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}\' for a resource.')
         c.argument('name', id_part=None, help='The name of the scope assignment to create.')
 

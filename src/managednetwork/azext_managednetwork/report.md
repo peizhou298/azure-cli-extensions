@@ -8,17 +8,18 @@ create a managednetwork.
 
 |Option|Type|Description|Path (SDK)|Path (swagger)|
 |------|----|-----------|----------|--------------|
-|**--name**|str|The name of the scope assignment to create.|scope_assignment_name|scopeAssignmentName|
-|--scope|str|The base resource of the scope assignment to create. The scope can be any REST resource instance. For example, use '/subscriptions/{subscription-id}/' for a subscription, '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.|scope|scope|
+|**--resource-group**|str|The name of the resource group.|resource_group_name|resourceGroupName|
+|**--name**|str|The name of the Managed Network.|managed_network_name|managedNetworkName|
 |--location|str|The geo-location where the resource lives|/location|/location|
-|--assigned-managed-network|str|The managed network ID with scope will be assigned to.|/assigned_managed_network|/properties/assignedManagedNetwork|
+|--tags|dictionary|Resource tags|/tags|/tags|
+|--scope|dict|The collection of management groups, subscriptions, virtual networks, and subnets by the Managed Network. This is a read-only property that is reflective of all ScopeAssignments for this Managed Network|/scope|/properties/scope|
 
-**Example: ScopeAssignmentsPut**
+**Example: ManagedNetworksPut**
 
 ```
-managednetwork create --scope subscriptions/subscriptionC
-        --name subscriptionCAssignment
-        --assigned-managed-network subscriptions/subscriptionA/resourceGroups/myResourceGroup/providers/Microsoft.ManagedNetwork/managedNetworks/myManagedNetwork
+managednetwork create --resource-group myResourceGroup
+        --name myManagedNetwork
+        --location eastus
 ```
 ### managednetwork update
 
@@ -26,24 +27,32 @@ update a managednetwork.
 
 |Option|Type|Description|Path (SDK)|Path (swagger)|
 |------|----|-----------|----------|--------------|
-|**--name**|str|The name of the scope assignment to create.|scope_assignment_name|scopeAssignmentName|
-|--scope|str|The base resource of the scope assignment to create. The scope can be any REST resource instance. For example, use '/subscriptions/{subscription-id}/' for a subscription, '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.|scope|scope|
+|**--resource-group**|str|The name of the resource group.|resource_group_name|resourceGroupName|
+|**--name**|str|The name of the Managed Network.|managed_network_name|managedNetworkName|
 |--location|str|The geo-location where the resource lives|/location|/location|
-|--assigned-managed-network|str|The managed network ID with scope will be assigned to.|/assigned_managed_network|/properties/assignedManagedNetwork|
+|--tags|dictionary|Resource tags|/tags|/tags|
+|--scope|dict|The collection of management groups, subscriptions, virtual networks, and subnets by the Managed Network. This is a read-only property that is reflective of all ScopeAssignments for this Managed Network|/scope|/properties/scope|
+
+**Example: ManagedNetworksPatch**
+
+```
+managednetwork update --resource-group myResourceGroup
+        --name myManagedNetwork
+```
 ### managednetwork delete
 
 delete a managednetwork.
 
 |Option|Type|Description|Path (SDK)|Path (swagger)|
 |------|----|-----------|----------|--------------|
-|**--name**|str|The name of the scope assignment to create.|scope_assignment_name|scopeAssignmentName|
-|--scope|str|The base resource of the scope assignment to create. The scope can be any REST resource instance. For example, use '/subscriptions/{subscription-id}/' for a subscription, '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.|scope|scope|
+|**--resource-group**|str|The name of the resource group.|resource_group_name|resourceGroupName|
+|**--name**|str|The name of the Managed Network.|managed_network_name|managedNetworkName|
 
-**Example: ScopeAssignmentsDelete**
+**Example: ManagedNetworksDelete**
 
 ```
-managednetwork delete --scope subscriptions/subscriptionC
-        --name subscriptionCAssignment
+managednetwork delete --resource-group myResourceGroup
+        --name myManagedNetwork
 ```
 ### managednetwork list
 
@@ -51,15 +60,15 @@ list a managednetwork.
 
 |Option|Type|Description|Path (SDK)|Path (swagger)|
 |------|----|-----------|----------|--------------|
-|--scope|str|The base resource of the scope assignment to create. The scope can be any REST resource instance. For example, use '/subscriptions/{subscription-id}/' for a subscription, '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.|scope|scope|
+|**--resource-group**|str|The name of the resource group.|resource_group_name|resourceGroupName|
 ### managednetwork show
 
 show a managednetwork.
 
 |Option|Type|Description|Path (SDK)|Path (swagger)|
 |------|----|-----------|----------|--------------|
-|**--name**|str|The name of the scope assignment to create.|scope_assignment_name|scopeAssignmentName|
-|--scope|str|The base resource of the scope assignment to create. The scope can be any REST resource instance. For example, use '/subscriptions/{subscription-id}/' for a subscription, '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.|scope|scope|
+|**--resource-group**|str|The name of the resource group.|resource_group_name|resourceGroupName|
+|**--name**|str|The name of the Managed Network.|managed_network_name|managedNetworkName|
 ## managednetwork managed-network-group
 
 ### managednetwork managed-network-group create
@@ -207,3 +216,63 @@ show a managednetwork managed-network-peering-policy.
 |**--resource-group**|str|The name of the resource group.|resource_group_name|resourceGroupName|
 |**--managed-network-name**|str|The name of the Managed Network.|managed_network_name|managedNetworkName|
 |**--name**|str|The name of the Managed Network Peering Policy.|managed_network_peering_policy_name|managedNetworkPeeringPolicyName|
+## managednetwork scope-assignment
+
+### managednetwork scope-assignment create
+
+create a managednetwork scope-assignment.
+
+|Option|Type|Description|Path (SDK)|Path (swagger)|
+|------|----|-----------|----------|--------------|
+|**--name**|str|The name of the scope assignment to create.|scope_assignment_name|scopeAssignmentName|
+|--scope|str|The base resource of the scope assignment to create. The scope can be any REST resource instance. For example, use '/subscriptions/{subscription-id}/' for a subscription, '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.|scope|scope|
+|--location|str|The geo-location where the resource lives|/location|/location|
+|--assigned-managed-network|str|The managed network ID with scope will be assigned to.|/assigned_managed_network|/properties/assignedManagedNetwork|
+
+**Example: ScopeAssignmentsPut**
+
+```
+managednetwork scope-assignment create --scope "/subscriptions/{{ subscription_id }}"
+        --name subscriptionCAssignment
+        --assigned-managed-network "/subscriptions/{{ subscription_id }}/resourceGroups/{{ resource_group }}/providers/Microsoft.ManagedNetwork/managedNetworks/{{ managed_network_name }}"
+```
+### managednetwork scope-assignment update
+
+update a managednetwork scope-assignment.
+
+|Option|Type|Description|Path (SDK)|Path (swagger)|
+|------|----|-----------|----------|--------------|
+|**--name**|str|The name of the scope assignment to create.|scope_assignment_name|scopeAssignmentName|
+|--scope|str|The base resource of the scope assignment to create. The scope can be any REST resource instance. For example, use '/subscriptions/{subscription-id}/' for a subscription, '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.|scope|scope|
+|--location|str|The geo-location where the resource lives|/location|/location|
+|--assigned-managed-network|str|The managed network ID with scope will be assigned to.|/assigned_managed_network|/properties/assignedManagedNetwork|
+### managednetwork scope-assignment delete
+
+delete a managednetwork scope-assignment.
+
+|Option|Type|Description|Path (SDK)|Path (swagger)|
+|------|----|-----------|----------|--------------|
+|**--name**|str|The name of the scope assignment to create.|scope_assignment_name|scopeAssignmentName|
+|--scope|str|The base resource of the scope assignment to create. The scope can be any REST resource instance. For example, use '/subscriptions/{subscription-id}/' for a subscription, '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.|scope|scope|
+
+**Example: ScopeAssignmentsDelete**
+
+```
+managednetwork scope-assignment delete --scope "/subscriptions/{{ subscription_id }}"
+        --name subscriptionCAssignment
+```
+### managednetwork scope-assignment list
+
+list a managednetwork scope-assignment.
+
+|Option|Type|Description|Path (SDK)|Path (swagger)|
+|------|----|-----------|----------|--------------|
+|--scope|str|The base resource of the scope assignment to create. The scope can be any REST resource instance. For example, use '/subscriptions/{subscription-id}/' for a subscription, '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.|scope|scope|
+### managednetwork scope-assignment show
+
+show a managednetwork scope-assignment.
+
+|Option|Type|Description|Path (SDK)|Path (swagger)|
+|------|----|-----------|----------|--------------|
+|**--name**|str|The name of the scope assignment to create.|scope_assignment_name|scopeAssignmentName|
+|--scope|str|The base resource of the scope assignment to create. The scope can be any REST resource instance. For example, use '/subscriptions/{subscription-id}/' for a subscription, '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.|scope|scope|

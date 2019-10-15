@@ -52,44 +52,44 @@ helps['managednetwork show'] = """
     short-summary: show managed network.
 """
 
-helps['managednetwork'] = """
+helps['managednetwork scope-assignment'] = """
     type: group
     short-summary: Commands to manage scope assignment.
 """
 
-helps['managednetwork create'] = """
+helps['managednetwork scope-assignment create'] = """
     type: command
     short-summary: create scope assignment.
     examples:
       - name: ScopeAssignmentsPut
         text: |-
-               az managednetwork create --scope "subscriptions/subscriptionC" --name \\
-               "subscriptionCAssignment" --assigned-managed-network "subscriptions/subscriptionA/resource
-               Groups/myResourceGroup/providers/Microsoft.ManagedNetwork/managedNetworks/myManagedNetwork
-               "
+               az managednetwork scope-assignment create --scope "/subscriptions/{{ subscription_id }}" \\
+               --name "subscriptionCAssignment" --assigned-managed-network "/subscriptions/{{ subscriptio
+               n_id }}/resourceGroups/{{ resource_group }}/providers/Microsoft.ManagedNetwork/managedNetw
+               orks/{{ managed_network_name }}"
 """
 
-helps['managednetwork update'] = """
+helps['managednetwork scope-assignment update'] = """
     type: command
     short-summary: update scope assignment.
 """
 
-helps['managednetwork delete'] = """
+helps['managednetwork scope-assignment delete'] = """
     type: command
     short-summary: delete scope assignment.
     examples:
       - name: ScopeAssignmentsDelete
         text: |-
-               az managednetwork delete --scope "subscriptions/subscriptionC" --name \\
-               "subscriptionCAssignment"
+               az managednetwork scope-assignment delete --scope "/subscriptions/{{ subscription_id }}" \\
+               --name "subscriptionCAssignment"
 """
 
-helps['managednetwork list'] = """
+helps['managednetwork scope-assignment list'] = """
     type: command
     short-summary: list scope assignment.
 """
 
-helps['managednetwork show'] = """
+helps['managednetwork scope-assignment show'] = """
     type: command
     short-summary: show scope assignment.
 """

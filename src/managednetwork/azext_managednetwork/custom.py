@@ -36,30 +36,30 @@ def list_managednetwork(cmd, client,
     return client.list_by_subscription()
 
 
-def create_managednetwork(cmd, client,
-                          name,
-                          scope=None,
-                          location=None,
-                          assigned_managed_network=None):
+def create_managednetwork_scope_assignment(cmd, client,
+                                           name,
+                                           scope=None,
+                                           location=None,
+                                           assigned_managed_network=None):
     body = {}
     body['location'] = location  # str
     body['assigned_managed_network'] = assigned_managed_network  # str
     return client.create_or_update(parameters=body, scope=scope, scope_assignment_name=name)
 
 
-def update_managednetwork(cmd, client, body,
-                          name,
-                          scope=None,
-                          location=None,
-                          assigned_managed_network=None):
+def update_managednetwork_scope_assignment(cmd, client, body,
+                                           name,
+                                           scope=None,
+                                           location=None,
+                                           assigned_managed_network=None):
     body = client.get(scope=scope, scope_assignment_name=name).as_dict()
     body.location = location  # str
     body.assigned_managed_network = assigned_managed_network  # str
     return client.create_or_update(parameters=body, scope=scope, scope_assignment_name=name)
 
 
-def list_managednetwork(cmd, client,
-                        scope=None):
+def list_managednetwork_scope_assignment(cmd, client,
+                                         scope=None):
     return client.list(scope=scope)
 
 

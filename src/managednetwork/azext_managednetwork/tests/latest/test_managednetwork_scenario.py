@@ -83,38 +83,38 @@ class ApimgmtScenarioTest(ScenarioTest):
         ])
 
 # create_or_update -- create
-        self.cmd('managednetwork create  --scope "subscriptions/subscriptionC" --name "subscriptionCAssignment" --assigned-managed-network "subscriptions/subscriptionA/resourceGroups/myResourceGroup/providers/Microsoft.ManagedNetwork/managedNetworks/myManagedNetwork"', checks=[
+        self.cmd('managednetwork scope-assignment create  --scope "/subscriptions/{{ subscription_id }}" --name "subscriptionCAssignment" --assigned-managed-network "/subscriptions/{{ subscription_id }}/resourceGroups/{{ resource_group }}/providers/Microsoft.ManagedNetwork/managedNetworks/{{ managed_network_name }}"', checks=[
         ])
 
-        self.cmd('managednetwork create  --scope "subscriptions/subscriptionC" --name "subscriptionCAssignment"', checks=[
+        self.cmd('managednetwork scope-assignment create  --scope "/subscriptions/{{ subscription_id }}" --name "subscriptionCAssignment"', checks=[
         ])
 
 # create_or_update -- update
-        self.cmd('managednetwork update  --scope "subscriptions/subscriptionC" --name "subscriptionCAssignment" --assigned-managed-network "subscriptions/subscriptionA/resourceGroups/myResourceGroup/providers/Microsoft.ManagedNetwork/managedNetworks/myManagedNetwork"', checks=[
+        self.cmd('managednetwork scope-assignment update  --scope "/subscriptions/{{ subscription_id }}" --name "subscriptionCAssignment" --assigned-managed-network "/subscriptions/{{ subscription_id }}/resourceGroups/{{ resource_group }}/providers/Microsoft.ManagedNetwork/managedNetworks/{{ managed_network_name }}"', checks=[
         ])
 
-        self.cmd('managednetwork update  --scope "subscriptions/subscriptionC" --name "subscriptionCAssignment"', checks=[
+        self.cmd('managednetwork scope-assignment update  --scope "/subscriptions/{{ subscription_id }}" --name "subscriptionCAssignment"', checks=[
         ])
 
 # delete -- delete
-        self.cmd('managednetwork delete  --scope "subscriptions/subscriptionC" --name "subscriptionCAssignment"', checks=[
+        self.cmd('managednetwork scope-assignment delete  --scope "/subscriptions/{{ subscription_id }}" --name "subscriptionCAssignment"', checks=[
         ])
 
-        self.cmd('managednetwork delete  --scope "subscriptions/subscriptionC" --name "subscriptionCAssignment"', checks=[
+        self.cmd('managednetwork scope-assignment delete  --scope "/subscriptions/{{ subscription_id }}" --name "subscriptionCAssignment"', checks=[
         ])
 
 # list -- list
-        self.cmd('managednetwork list  --scope "subscriptions/subscriptionC"', checks=[
+        self.cmd('managednetwork scope-assignment list  --scope "/subscriptions/{{ subscription_id }}"', checks=[
         ])
 
-        self.cmd('managednetwork list  --scope "subscriptions/subscriptionC"', checks=[
+        self.cmd('managednetwork scope-assignment list  --scope "/subscriptions/{{ subscription_id }}"', checks=[
         ])
 
 # get -- show
-        self.cmd('managednetwork show  --scope "subscriptions/subscriptionC" --name "subscriptionCAssignment"', checks=[
+        self.cmd('managednetwork scope-assignment show  --scope "/subscriptions/{{ subscription_id }}" --name "subscriptionCAssignment"', checks=[
         ])
 
-        self.cmd('managednetwork show  --scope "subscriptions/subscriptionC" --name "subscriptionCAssignment"', checks=[
+        self.cmd('managednetwork scope-assignment show  --scope "/subscriptions/{{ subscription_id }}" --name "subscriptionCAssignment"', checks=[
         ])
 
 # create_or_update -- create

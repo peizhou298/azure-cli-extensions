@@ -14,7 +14,7 @@ def load_command_table(self, _):
 
     from ._client_factory import cf_managed_networks
     managednetwork_managed_networks = CliCommandType(
-        operations_tmpl='azext_managednetwork.vendored_sdks.managednetwork.operations._services_operations##ManagedNetworksOperations.{}',
+        operations_tmpl='azext_managednetwork.vendored_sdks.managednetwork.operations._managed_networks_operations#ManagedNetworksOperations.{}',
         client_factory=cf_managed_networks)
     with self.command_group('managednetwork', managednetwork_managed_networks, client_factory=cf_managed_networks) as g:
         g.custom_command('create', 'create_managednetwork')
@@ -27,11 +27,11 @@ def load_command_table(self, _):
     managednetwork_scope_assignments = CliCommandType(
         operations_tmpl='azext_managednetwork.vendored_sdks.managednetwork.operations._scope_assignments_operations#ScopeAssignmentsOperations.{}',
         client_factory=cf_scope_assignments)
-    with self.command_group('managednetwork', managednetwork_scope_assignments, client_factory=cf_scope_assignments) as g:
-        g.custom_command('create', 'create_managednetwork')
-        g.generic_update_command('update', custom_func_name='update_managednetwork')
+    with self.command_group('managednetwork scope-assignment', managednetwork_scope_assignments, client_factory=cf_scope_assignments) as g:
+        g.custom_command('create', 'create_managednetwork_scope_assignment')
+        g.generic_update_command('update', custom_func_name='update_managednetwork_scope_assignment')
         g.command('delete', 'delete')
-        g.custom_command('list', 'list_managednetwork')
+        g.custom_command('list', 'list_managednetwork_scope_assignment')
         g.show_command('show', 'get')
 
     from ._client_factory import cf_managed_network_groups
