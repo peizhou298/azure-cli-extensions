@@ -17,7 +17,11 @@ def create_managednetwork(cmd, client,
                           location=None,
                           tags=None,
                           scope=None):
-    return client.create_or_update(resource_group_name=resource_group, managed_network_name=name)
+    body = {}
+    body['location'] = location  # str
+    body['tags'] = tags  # dictionary
+    body['scope'] = json.loads(scope) if isinstance(scope, str) else scope
+    return client.create_or_update(managed_network=body, resource_group_name=resource_group, managed_network_name=name)
 
 
 def update_managednetwork(cmd, client, body,
@@ -26,7 +30,11 @@ def update_managednetwork(cmd, client, body,
                           location=None,
                           tags=None,
                           scope=None):
-    return client.create_or_update(resource_group_name=resource_group, managed_network_name=name)
+    body = client.get(resource_group_name=resource_group, managed_network_name=name).as_dict()
+    body.location = location  # str
+    body.tags = tags  # dictionary
+    body.scope = json.loads(scope) if isinstance(scope, str) else scope
+    return client.create_or_update(managed_network=body, resource_group_name=resource_group, managed_network_name=name)
 
 
 def list_managednetwork(cmd, client,

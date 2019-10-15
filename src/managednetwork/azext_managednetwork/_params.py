@@ -21,6 +21,7 @@ def load_arguments(self, _):
     name_arg_type = CLIArgumentType(options_list=('--name', '-n'), metavar='NAME')
 
     with self.argument_context('managednetwork create') as c:
+        c.argument('managed_network', id_part=None, help='undefined')
         c.argument('resource_group', resource_group_name_type)
         c.argument('name', id_part=None, help='The name of the Managed Network.')
         c.argument('location', arg_type=get_location_type(self.cli_ctx))
@@ -28,6 +29,7 @@ def load_arguments(self, _):
         c.argument('scope', id_part=None, help='The collection of management groups, subscriptions, virtual networks, and subnets by the Managed Network. This is a read-only property that is reflective of all ScopeAssignments for this Managed Network')
 
     with self.argument_context('managednetwork update') as c:
+        c.argument('managed_network', id_part=None, help='undefined')
         c.argument('resource_group', resource_group_name_type)
         c.argument('name', id_part=None, help='The name of the Managed Network.')
         c.argument('location', arg_type=get_location_type(self.cli_ctx))
