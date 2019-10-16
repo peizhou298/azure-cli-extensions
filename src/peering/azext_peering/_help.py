@@ -61,8 +61,9 @@ helps['peering create'] = """
         text: |-
                az peering create --resource-group "rgName" --name "peeringName" --sku-name \\
                "Basic_Direct_Free" --kind "Direct" --direct-direct-peering-type "Edge" \\
-               --peering-location "peeringLocation0" --location "eastus" --direct-connections bandwidthInMbps=10000 \\
-               sessionAddressProvider=Peer useForPeeringService=false peeringDBFacilityId=99999 sessionPrefixV4=192.168.0.0/31 \\
+               --peering-location "peeringLocation0" --location "eastus" \\
+               --direct-connections bandwidthInMbps=10000 sessionAddressProvider=Peer \\
+               useForPeeringService=false peeringDBFacilityId=99999 sessionPrefixV4=192.168.0.0/31 \\
                sessionPrefixV6=fd00::0/127 maxPrefixesAdvertisedV4=1000 maxPrefixesAdvertisedV6=100 md5AuthenticationKey=test-md5-auth-key \\
                connectionIdentifier=5F4CB5C7-6B43-4444-9338-9ABC72606C16 --direct-connections bandwidthInMbps=10000 \\
                sessionAddressProvider=Microsoft useForPeeringService=true peeringDBFacilityId=99999 \\
