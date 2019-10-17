@@ -8,6 +8,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=unused-argument
 
+import json
 
 def create_managednetwork(cmd, client,
                           resource_group,
