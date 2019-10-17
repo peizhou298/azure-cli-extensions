@@ -10,6 +10,7 @@
 
 import json
 
+
 def create_managednetwork(cmd, client,
                           resource_group,
                           name,
