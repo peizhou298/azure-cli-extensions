@@ -16,11 +16,21 @@ def create_managednetwork(cmd, client,
                           name,
                           location=None,
                           tags=None,
-                          scope=None):
+                          scope_management_groups=None,
+                          scope_subscriptions=None,
+                          scope_virtual_networks=None,
+                          scope_subnets=None,
+                          connectivity_groups=None,
+                          connectivity_peerings=None):
     body = {}
     body['location'] = location  # str
     body['tags'] = tags  # dictionary
-    body['scope'] = json.loads(scope) if isinstance(scope, str) else scope
+    body.setdefault('scope', {})['management_groups'] = json.loads(scope_management_groups) if isinstance(scope_management_groups, str) else scope_management_groups
+    body.setdefault('scope', {})['subscriptions'] = json.loads(scope_subscriptions) if isinstance(scope_subscriptions, str) else scope_subscriptions
+    body.setdefault('scope', {})['virtual_networks'] = json.loads(scope_virtual_networks) if isinstance(scope_virtual_networks, str) else scope_virtual_networks
+    body.setdefault('scope', {})['subnets'] = json.loads(scope_subnets) if isinstance(scope_subnets, str) else scope_subnets
+    body.setdefault('connectivity', {})['groups'] = json.loads(connectivity_groups) if isinstance(connectivity_groups, str) else connectivity_groups
+    body.setdefault('connectivity', {})['peerings'] = json.loads(connectivity_peerings) if isinstance(connectivity_peerings, str) else connectivity_peerings
     return client.create_or_update(resource_group_name=resource_group, managed_network_name=name, managed_network=body)
 
 
@@ -29,11 +39,21 @@ def update_managednetwork(cmd, client, body,
                           name,
                           location=None,
                           tags=None,
-                          scope=None):
+                          scope_management_groups=None,
+                          scope_subscriptions=None,
+                          scope_virtual_networks=None,
+                          scope_subnets=None,
+                          connectivity_groups=None,
+                          connectivity_peerings=None):
     body = client.get(resource_group_name=resource_group, managed_network_name=name).as_dict()
     body.location = location  # str
     body.tags = tags  # dictionary
-    body.scope = json.loads(scope) if isinstance(scope, str) else scope
+    body.scope.management_groups = json.loads(scope_management_groups) if isinstance(scope_management_groups, str) else scope_management_groups
+    body.scope.subscriptions = json.loads(scope_subscriptions) if isinstance(scope_subscriptions, str) else scope_subscriptions
+    body.scope.virtual_networks = json.loads(scope_virtual_networks) if isinstance(scope_virtual_networks, str) else scope_virtual_networks
+    body.scope.subnets = json.loads(scope_subnets) if isinstance(scope_subnets, str) else scope_subnets
+    body.connectivity.groups = json.loads(connectivity_groups) if isinstance(connectivity_groups, str) else connectivity_groups
+    body.connectivity.peerings = json.loads(connectivity_peerings) if isinstance(connectivity_peerings, str) else connectivity_peerings
     return client.create_or_update(resource_group_name=resource_group, managed_network_name=name, managed_network=body)
 
 
@@ -123,13 +143,13 @@ def create_managednetwork_managed_network_peering_policy(cmd, client,
                                                          name,
                                                          _type,
                                                          location=None,
-                                                         hub=None,
+                                                         hub_id=None,
                                                          spokes=None,
                                                          mesh=None):
     body = {}
     body['location'] = location  # str
     body['type'] = _type  # str
-    body['hub'] = json.loads(hub) if isinstance(hub, str) else hub
+    body.setdefault('hub', {})['id'] = hub_id  # str
     body['spokes'] = json.loads(spokes) if isinstance(spokes, str) else spokes
     body['mesh'] = json.loads(mesh) if isinstance(mesh, str) else mesh
     return client.create_or_update(resource_group_name=resource_group, managed_network_name=managed_network_name, managed_network_peering_policy_name=name, managed_network_policy=body)
@@ -141,13 +161,13 @@ def update_managednetwork_managed_network_peering_policy(cmd, client, body,
                                                          name,
                                                          _type,
                                                          location=None,
-                                                         hub=None,
+                                                         hub_id=None,
                                                          spokes=None,
                                                          mesh=None):
     body = client.get(resource_group_name=resource_group, managed_network_name=managed_network_name, managed_network_peering_policy_name=name).as_dict()
     body.location = location  # str
     body.type = _type  # str
-    body.hub = json.loads(hub) if isinstance(hub, str) else hub
+    body.hub.id = hub_id  # str
     body.spokes = json.loads(spokes) if isinstance(spokes, str) else spokes
     body.mesh = json.loads(mesh) if isinstance(mesh, str) else mesh
     return client.create_or_update(resource_group_name=resource_group, managed_network_name=managed_network_name, managed_network_peering_policy_name=name, managed_network_policy=body)

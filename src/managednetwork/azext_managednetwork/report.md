@@ -12,7 +12,12 @@ create a managednetwork.
 |**--name**|str|The name of the Managed Network.|managed_network_name|managedNetworkName|
 |--location|str|The geo-location where the resource lives|/location|/location|
 |--tags|dictionary|Resource tags|/tags|/tags|
-|--scope|dict|The collection of management groups, subscriptions, virtual networks, and subnets by the Managed Network. This is a read-only property that is reflective of all ScopeAssignments for this Managed Network|/scope|/properties/scope|
+|--scope-management-groups|list|The collection of management groups covered by the Managed Network|//scope/management_groups|//scope/managementGroups|
+|--scope-subscriptions|list|The collection of subscriptions covered by the Managed Network|//scope/subscriptions|//scope/subscriptions|
+|--scope-virtual-networks|list|The collection of virtual nets covered by the Managed Network|//scope/virtual_networks|//scope/virtualNetworks|
+|--scope-subnets|list|The collection of  subnets covered by the Managed Network|//scope/subnets|//scope/subnets|
+|--connectivity-groups|list|The collection of connectivity related Managed Network Groups within the Managed Network|//connectivity/groups|//connectivity/groups|
+|--connectivity-peerings|list|The collection of Managed Network Peering Policies within the Managed Network|//connectivity/peerings|//connectivity/peerings|
 
 **Example: ManagedNetworksPut**
 
@@ -31,7 +36,12 @@ update a managednetwork.
 |**--name**|str|The name of the Managed Network.|managed_network_name|managedNetworkName|
 |--location|str|The geo-location where the resource lives|/location|/location|
 |--tags|dictionary|Resource tags|/tags|/tags|
-|--scope|dict|The collection of management groups, subscriptions, virtual networks, and subnets by the Managed Network. This is a read-only property that is reflective of all ScopeAssignments for this Managed Network|/scope|/properties/scope|
+|--scope-management-groups|list|The collection of management groups covered by the Managed Network|//scope/management_groups|//scope/managementGroups|
+|--scope-subscriptions|list|The collection of subscriptions covered by the Managed Network|//scope/subscriptions|//scope/subscriptions|
+|--scope-virtual-networks|list|The collection of virtual nets covered by the Managed Network|//scope/virtual_networks|//scope/virtualNetworks|
+|--scope-subnets|list|The collection of  subnets covered by the Managed Network|//scope/subnets|//scope/subnets|
+|--connectivity-groups|list|The collection of connectivity related Managed Network Groups within the Managed Network|//connectivity/groups|//connectivity/groups|
+|--connectivity-peerings|list|The collection of Managed Network Peering Policies within the Managed Network|//connectivity/peerings|//connectivity/peerings|
 
 **Example: ManagedNetworksPatch**
 
@@ -81,10 +91,10 @@ create a managednetwork managed-network-group.
 |**--managed-network-name**|str|The name of the Managed Network.|managed_network_name|managedNetworkName|
 |**--name**|str|The name of the Managed Network Group.|managed_network_group_name|managedNetworkGroupName|
 |--location|str|The geo-location where the resource lives|/location|/location|
-|--management-groups|list|The collection of management groups covered by the Managed Network|/management_groups|/properties/managementGroups|
-|--subscriptions|list|The collection of subscriptions covered by the Managed Network|/subscriptions|/properties/subscriptions|
-|--virtual-networks|list|The collection of virtual nets covered by the Managed Network|/virtual_networks|/properties/virtualNetworks|
-|--subnets|list|The collection of  subnets covered by the Managed Network|/subnets|/properties/subnets|
+|--management-groups|list|The collection of management groups covered by the Managed Network|//management_groups|//managementGroups|
+|--subscriptions|list|The collection of subscriptions covered by the Managed Network|//subscriptions|//subscriptions|
+|--virtual-networks|list|The collection of virtual nets covered by the Managed Network|//virtual_networks|//virtualNetworks|
+|--subnets|list|The collection of  subnets covered by the Managed Network|//subnets|//subnets|
 |--kind|str|Responsibility role under which this Managed Network Group will be created|/kind|/kind|
 
 **Example: ManagementNetworkGroupsPut**
@@ -104,10 +114,10 @@ update a managednetwork managed-network-group.
 |**--managed-network-name**|str|The name of the Managed Network.|managed_network_name|managedNetworkName|
 |**--name**|str|The name of the Managed Network Group.|managed_network_group_name|managedNetworkGroupName|
 |--location|str|The geo-location where the resource lives|/location|/location|
-|--management-groups|list|The collection of management groups covered by the Managed Network|/management_groups|/properties/managementGroups|
-|--subscriptions|list|The collection of subscriptions covered by the Managed Network|/subscriptions|/properties/subscriptions|
-|--virtual-networks|list|The collection of virtual nets covered by the Managed Network|/virtual_networks|/properties/virtualNetworks|
-|--subnets|list|The collection of  subnets covered by the Managed Network|/subnets|/properties/subnets|
+|--management-groups|list|The collection of management groups covered by the Managed Network|//management_groups|//managementGroups|
+|--subscriptions|list|The collection of subscriptions covered by the Managed Network|//subscriptions|//subscriptions|
+|--virtual-networks|list|The collection of virtual nets covered by the Managed Network|//virtual_networks|//virtualNetworks|
+|--subnets|list|The collection of  subnets covered by the Managed Network|//subnets|//subnets|
 |--kind|str|Responsibility role under which this Managed Network Group will be created|/kind|/kind|
 ### managednetwork managed-network-group delete
 
@@ -154,11 +164,11 @@ create a managednetwork managed-network-peering-policy.
 |**--resource-group**|str|The name of the resource group.|resource_group_name|resourceGroupName|
 |**--managed-network-name**|str|The name of the Managed Network.|managed_network_name|managedNetworkName|
 |**--name**|str|The name of the Managed Network Peering Policy.|managed_network_peering_policy_name|managedNetworkPeeringPolicyName|
-|**--type**|str|Gets or sets the connectivity type of a network structure policy|/type|/properties/type|
+|**--type**|str|Gets or sets the connectivity type of a network structure policy|//type|//type|
 |--location|str|The geo-location where the resource lives|/location|/location|
-|--hub|dict|Gets or sets the hub virtual network ID|/hub|/properties/hub|
-|--spokes|list|Gets or sets the spokes group IDs|/spokes|/properties/spokes|
-|--mesh|list|Gets or sets the mesh group IDs|/mesh|/properties/mesh|
+|--hub-id|str|Resource Id|//hub/id|//hub/id|
+|--spokes|list|Gets or sets the spokes group IDs|//spokes|//spokes|
+|--mesh|list|Gets or sets the mesh group IDs|//mesh|//mesh|
 
 **Example: ManagedNetworkPeeringPoliciesPut**
 
@@ -166,7 +176,6 @@ create a managednetwork managed-network-peering-policy.
 managednetwork managed-network-peering-policy create --resource-group myResourceGroup
         --managed-network-name myManagedNetwork
         --name myHubAndSpoke
-        --type HubAndSpokeTopology
 ```
 ### managednetwork managed-network-peering-policy update
 
@@ -177,11 +186,11 @@ update a managednetwork managed-network-peering-policy.
 |**--resource-group**|str|The name of the resource group.|resource_group_name|resourceGroupName|
 |**--managed-network-name**|str|The name of the Managed Network.|managed_network_name|managedNetworkName|
 |**--name**|str|The name of the Managed Network Peering Policy.|managed_network_peering_policy_name|managedNetworkPeeringPolicyName|
-|**--type**|str|Gets or sets the connectivity type of a network structure policy|/type|/properties/type|
+|**--type**|str|Gets or sets the connectivity type of a network structure policy|//type|//type|
 |--location|str|The geo-location where the resource lives|/location|/location|
-|--hub|dict|Gets or sets the hub virtual network ID|/hub|/properties/hub|
-|--spokes|list|Gets or sets the spokes group IDs|/spokes|/properties/spokes|
-|--mesh|list|Gets or sets the mesh group IDs|/mesh|/properties/mesh|
+|--hub-id|str|Resource Id|//hub/id|//hub/id|
+|--spokes|list|Gets or sets the spokes group IDs|//spokes|//spokes|
+|--mesh|list|Gets or sets the mesh group IDs|//mesh|//mesh|
 ### managednetwork managed-network-peering-policy delete
 
 delete a managednetwork managed-network-peering-policy.
@@ -227,14 +236,13 @@ create a managednetwork scope-assignment.
 |**--name**|str|The name of the scope assignment to create.|scope_assignment_name|scopeAssignmentName|
 |--scope|str|The base resource of the scope assignment to create. The scope can be any REST resource instance. For example, use '/subscriptions/{subscription-id}/' for a subscription, '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.|scope|scope|
 |--location|str|The geo-location where the resource lives|/location|/location|
-|--assigned-managed-network|str|The managed network ID with scope will be assigned to.|/assigned_managed_network|/properties/assignedManagedNetwork|
+|--assigned-managed-network|str|The managed network ID with scope will be assigned to.|//assigned_managed_network|//assignedManagedNetwork|
 
 **Example: ScopeAssignmentsPut**
 
 ```
 managednetwork scope-assignment create --scope "/subscriptions/{{ subscription_id }}"
         --name subscriptionCAssignment
-        --assigned-managed-network "/subscriptions/{{ subscription_id }}/resourceGroups/{{ resource_group }}/providers/Microsoft.ManagedNetwork/managedNetworks/{{ managed_network_name }}"
 ```
 ### managednetwork scope-assignment update
 
@@ -245,7 +253,7 @@ update a managednetwork scope-assignment.
 |**--name**|str|The name of the scope assignment to create.|scope_assignment_name|scopeAssignmentName|
 |--scope|str|The base resource of the scope assignment to create. The scope can be any REST resource instance. For example, use '/subscriptions/{subscription-id}/' for a subscription, '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.|scope|scope|
 |--location|str|The geo-location where the resource lives|/location|/location|
-|--assigned-managed-network|str|The managed network ID with scope will be assigned to.|/assigned_managed_network|/properties/assignedManagedNetwork|
+|--assigned-managed-network|str|The managed network ID with scope will be assigned to.|//assigned_managed_network|//assignedManagedNetwork|
 ### managednetwork scope-assignment delete
 
 delete a managednetwork scope-assignment.

@@ -21,14 +21,24 @@ def load_arguments(self, _):
         c.argument('name', id_part=None, help='The name of the Managed Network.')
         c.argument('location', arg_type=get_location_type(self.cli_ctx))
         c.argument('tags', tags_type)
-        c.argument('scope', id_part=None, help='The collection of management groups, subscriptions, virtual networks, and subnets by the Managed Network. This is a read-only property that is reflective of all ScopeAssignments for this Managed Network')
+        c.argument('scope_management_groups', id_part=None, help='The collection of management groups covered by the Managed Network')
+        c.argument('scope_subscriptions', id_part=None, help='The collection of subscriptions covered by the Managed Network')
+        c.argument('scope_virtual_networks', id_part=None, help='The collection of virtual nets covered by the Managed Network')
+        c.argument('scope_subnets', id_part=None, help='The collection of  subnets covered by the Managed Network')
+        c.argument('connectivity_groups', id_part=None, help='The collection of connectivity related Managed Network Groups within the Managed Network')
+        c.argument('connectivity_peerings', id_part=None, help='The collection of Managed Network Peering Policies within the Managed Network')
 
     with self.argument_context('managednetwork update') as c:
         c.argument('resource_group', resource_group_name_type)
         c.argument('name', id_part=None, help='The name of the Managed Network.')
         c.argument('location', arg_type=get_location_type(self.cli_ctx))
         c.argument('tags', tags_type)
-        c.argument('scope', id_part=None, help='The collection of management groups, subscriptions, virtual networks, and subnets by the Managed Network. This is a read-only property that is reflective of all ScopeAssignments for this Managed Network')
+        c.argument('scope_management_groups', id_part=None, help='The collection of management groups covered by the Managed Network')
+        c.argument('scope_subscriptions', id_part=None, help='The collection of subscriptions covered by the Managed Network')
+        c.argument('scope_virtual_networks', id_part=None, help='The collection of virtual nets covered by the Managed Network')
+        c.argument('scope_subnets', id_part=None, help='The collection of  subnets covered by the Managed Network')
+        c.argument('connectivity_groups', id_part=None, help='The collection of connectivity related Managed Network Groups within the Managed Network')
+        c.argument('connectivity_peerings', id_part=None, help='The collection of Managed Network Peering Policies within the Managed Network')
 
     with self.argument_context('managednetwork delete') as c:
         c.argument('resource_group', resource_group_name_type)
@@ -106,7 +116,7 @@ def load_arguments(self, _):
         c.argument('name', id_part=None, help='The name of the Managed Network Peering Policy.')
         c.argument('location', arg_type=get_location_type(self.cli_ctx))
         c.argument('_type', options_list=['--type'], arg_type=get_enum_type(['HubAndSpokeTopology', 'MeshTopology']), id_part=None, help='Gets or sets the connectivity type of a network structure policy')
-        c.argument('hub', id_part=None, help='Gets or sets the hub virtual network ID')
+        c.argument('hub_id', id_part=None, help='Resource Id')
         c.argument('spokes', id_part=None, help='Gets or sets the spokes group IDs')
         c.argument('mesh', id_part=None, help='Gets or sets the mesh group IDs')
 
@@ -116,7 +126,7 @@ def load_arguments(self, _):
         c.argument('name', id_part=None, help='The name of the Managed Network Peering Policy.')
         c.argument('location', arg_type=get_location_type(self.cli_ctx))
         c.argument('_type', options_list=['--type'], arg_type=get_enum_type(['HubAndSpokeTopology', 'MeshTopology']), id_part=None, help='Gets or sets the connectivity type of a network structure policy')
-        c.argument('hub', id_part=None, help='Gets or sets the hub virtual network ID')
+        c.argument('hub_id', id_part=None, help='Resource Id')
         c.argument('spokes', id_part=None, help='Gets or sets the spokes group IDs')
         c.argument('mesh', id_part=None, help='Gets or sets the mesh group IDs')
 

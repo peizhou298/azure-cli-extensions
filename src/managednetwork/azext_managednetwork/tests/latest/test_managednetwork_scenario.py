@@ -83,14 +83,14 @@ class ApimgmtScenarioTest(ScenarioTest):
         ])
 
 # create_or_update -- create
-        self.cmd('managednetwork scope-assignment create  --scope "/subscriptions/{{ subscription_id }}" --name "subscriptionCAssignment" --assigned-managed-network "/subscriptions/{{ subscription_id }}/resourceGroups/{{ resource_group }}/providers/Microsoft.ManagedNetwork/managedNetworks/{{ managed_network_name }}"', checks=[
+        self.cmd('managednetwork scope-assignment create  --scope "/subscriptions/{{ subscription_id }}" --name "subscriptionCAssignment"', checks=[
         ])
 
         self.cmd('managednetwork scope-assignment create  --scope "/subscriptions/{{ subscription_id }}" --name "subscriptionCAssignment"', checks=[
         ])
 
 # create_or_update -- update
-        self.cmd('managednetwork scope-assignment update  --scope "/subscriptions/{{ subscription_id }}" --name "subscriptionCAssignment" --assigned-managed-network "/subscriptions/{{ subscription_id }}/resourceGroups/{{ resource_group }}/providers/Microsoft.ManagedNetwork/managedNetworks/{{ managed_network_name }}"', checks=[
+        self.cmd('managednetwork scope-assignment update  --scope "/subscriptions/{{ subscription_id }}" --name "subscriptionCAssignment"', checks=[
         ])
 
         self.cmd('managednetwork scope-assignment update  --scope "/subscriptions/{{ subscription_id }}" --name "subscriptionCAssignment"', checks=[
@@ -153,14 +153,14 @@ class ApimgmtScenarioTest(ScenarioTest):
         ])
 
 # create_or_update -- create
-        self.cmd('managednetwork managed-network-peering-policy create  --resource-group "myResourceGroup" --managed-network-name "myManagedNetwork" --name "myHubAndSpoke" --type "HubAndSpokeTopology"', checks=[
+        self.cmd('managednetwork managed-network-peering-policy create  --resource-group "myResourceGroup" --managed-network-name "myManagedNetwork" --name "myHubAndSpoke"', checks=[
         ])
 
         self.cmd('managednetwork managed-network-peering-policy create  --resource-group "myResourceGroup" --managed-network-name "myManagedNetwork" --name "myHubAndSpoke"', checks=[
         ])
 
 # create_or_update -- update
-        self.cmd('managednetwork managed-network-peering-policy update  --resource-group "myResourceGroup" --managed-network-name "myManagedNetwork" --name "myHubAndSpoke" --type "HubAndSpokeTopology"', checks=[
+        self.cmd('managednetwork managed-network-peering-policy update  --resource-group "myResourceGroup" --managed-network-name "myManagedNetwork" --name "myHubAndSpoke"', checks=[
         ])
 
         self.cmd('managednetwork managed-network-peering-policy update  --resource-group "myResourceGroup" --managed-network-name "myManagedNetwork" --name "myHubAndSpoke"', checks=[

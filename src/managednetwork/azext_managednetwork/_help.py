@@ -64,9 +64,7 @@ helps['managednetwork scope-assignment create'] = """
       - name: ScopeAssignmentsPut
         text: |-
                az managednetwork scope-assignment create --scope "/subscriptions/{{ subscription_id }}" \\
-               --name "subscriptionCAssignment" --assigned-managed-network "/subscriptions/{{ subscriptio
-               n_id }}/resourceGroups/{{ resource_group }}/providers/Microsoft.ManagedNetwork/managedNetw
-               orks/{{ managed_network_name }}"
+               --name "subscriptionCAssignment"
 """
 
 helps['managednetwork scope-assignment update'] = """
@@ -146,8 +144,7 @@ helps['managednetwork managed-network-peering-policy create'] = """
       - name: ManagedNetworkPeeringPoliciesPut
         text: |-
                az managednetwork managed-network-peering-policy create --resource-group \\
-               "myResourceGroup" --managed-network-name "myManagedNetwork" --name "myHubAndSpoke" --type \\
-               "HubAndSpokeTopology"
+               "myResourceGroup" --managed-network-name "myManagedNetwork" --name "myHubAndSpoke"
 """
 
 helps['managednetwork managed-network-peering-policy update'] = """
