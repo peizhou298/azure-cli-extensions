@@ -16,12 +16,13 @@ helps['peering asn'] = """
 
 helps['peering asn create'] = """
     type: command
-    short-summary: create peer asn.
+    short-summary: Create peer ASN.
     examples:
       - name: Create a peer ASN
         text: |-
                az peering asn create --name "peerAsnName" --peer-asn "65000" --emails \\
-               "abc@contoso.com,xyz@contoso.com" --phone "+1 (234) 567-8900" --peer-name "Contoso"
+               "abc@contoso.com,xyz@contoso.com" --phone "+1 (234) 567-8900" --peer-name "Contoso" \\
+               --validation-state Approved
 """
 
 helps['peering asn update'] = """
@@ -31,7 +32,7 @@ helps['peering asn update'] = """
 
 helps['peering asn delete'] = """
     type: command
-    short-summary: delete peer asn.
+    short-summary: Delete peer ASN.
     examples:
       - name: Delete a peer ASN
         text: |-
@@ -69,7 +70,8 @@ helps['peering create'] = """
                connectionIdentifier=5F4CB5C7-6B43-4444-9338-9ABC72606C16 \\
                --direct-connections bandwidthInMbps=10000 \\
                sessionAddressProvider=Microsoft useForPeeringService=true peeringDBFacilityId=99999 \\
-               connectionIdentifier=8AB00818-D533-4504-A25A-03A17F61201C
+               connectionIdentifier=8AB00818-D533-4504-A25A-03A17F61201C \\
+               --direct-peer-asn /subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Peering/peerAsns/peerAsnName
       - name: Create an exchange peering
         text: |-
                az peering create --resource-group "rgName" --name "peeringName" --sku-name \\
@@ -107,7 +109,7 @@ helps['peering show'] = """
 
 helps['peering service prefix'] = """
     type: group
-    short-summary: Commands to manage prefixe.
+    short-summary: Commands to manage prefixes.
 """
 
 helps['peering service prefix create'] = """
