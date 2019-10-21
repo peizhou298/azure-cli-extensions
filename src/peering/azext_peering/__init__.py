@@ -16,8 +16,8 @@ class PeeringCommandsLoader(AzCommandsLoader):
         peering_custom = CliCommandType(
             operations_tmpl='azext_peering.custom#{}',
             client_factory=cf_peering)
-        super( PeeringCommandsLoader, self).__init__(cli_ctx=cli_ctx,
-                                                       custom_command_type=peering_custom)
+        super(PeeringCommandsLoader, self).__init__(cli_ctx=cli_ctx,
+                                                    custom_command_type=peering_custom)
 
     def load_command_table(self, args):
         from azext_peering.commands import load_command_table
@@ -29,4 +29,4 @@ class PeeringCommandsLoader(AzCommandsLoader):
         load_arguments(self, command)
 
 
-COMMAND_LOADER_CLS =  PeeringCommandsLoader
+COMMAND_LOADER_CLS = PeeringCommandsLoader
