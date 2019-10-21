@@ -47,7 +47,7 @@ def load_arguments(self, _):
         c.argument('name', id_part=None, help='The peer ASN name.')
 
     with self.argument_context('peering asn list') as c:
-        # no args
+        pass
 
     with self.argument_context('peering asn show') as c:
         c.argument('name', id_part=None, help='The peer ASN name.')
@@ -102,7 +102,7 @@ def load_arguments(self, _):
         c.argument('name', id_part=None, help='The name of the peering.')
 
     with self.argument_context('peering service location list') as c:
-        # no args
+        pass
 
     with self.argument_context('peering service prefix create') as c:
         c.argument('resource_group', resource_group_name_type)
@@ -131,7 +131,7 @@ def load_arguments(self, _):
         c.argument('name', id_part=None, help='The name of the prefix.')
 
     with self.argument_context('peering service provider list') as c:
-        # no args
+        pass
 
     with self.argument_context('peering service create') as c:
         c.argument('resource_group', resource_group_name_type)
