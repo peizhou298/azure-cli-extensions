@@ -56,7 +56,7 @@ helps['peering'] = """
 
 helps['peering create'] = """
     type: command
-    short-summary: create peering.
+    short-summary: Create peering.
     examples:
       - name: Create a direct peering
         text: |-
@@ -72,11 +72,6 @@ helps['peering create'] = """
                sessionAddressProvider=Microsoft useForPeeringService=true peeringDBFacilityId=99999 \\
                connectionIdentifier=8AB00818-D533-4504-A25A-03A17F61201C \\
                --direct-peer-asn /subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Peering/peerAsns/peerAsnName
-      - name: Create an exchange peering
-        text: |-
-               az peering create --resource-group "rgName" --name "peeringName" --sku-name \\
-               "Basic_Exchange_Free" --kind "Exchange" --peering-location "peeringLocation0" --location \\
-               "eastus"
 """
 
 helps['peering update'] = """
