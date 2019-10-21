@@ -10,6 +10,11 @@
 
 import json
 
+def list_peering_legacy(cmd, client,
+                        peering_location=None,
+                        kind=None):
+    return client.list(peering_location=peering_location, kind=kind)
+
 
 def create_peering_asn(cmd, client,
                        name,
@@ -45,6 +50,12 @@ def update_peering_asn(cmd, client, body,
 
 def list_peering_asn(cmd, client):
     return client.list_by_subscription()
+
+
+def list_peering_locations(cmd, client,
+                           kind=None,
+                           direct_peering_type=None):
+    return client.list(kind=kind, direct_peering_type=direct_peering_type)
 
 
 def create_peering(cmd, client,
@@ -120,6 +131,10 @@ def list_peering(cmd, client,
     return client.list_by_subscription()
 
 
+def list_peering_service_location(cmd, client):
+    return client.list()
+
+
 def create_peering_service_prefix(cmd, client,
                                   resource_group,
                                   peering_service_name,
@@ -144,6 +159,10 @@ def list_peering_service_prefix(cmd, client,
                                 resource_group,
                                 peering_service_name):
     return client.list_by_peering_service(resource_group_name=resource_group, peering_service_name=peering_service_name)
+
+
+def list_peering_service_provider(cmd, client):
+    return client.list()
 
 
 def create_peering_service(cmd, client,

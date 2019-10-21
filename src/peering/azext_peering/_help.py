@@ -9,6 +9,21 @@
 from knack.help_files import helps  # pylint: disable=unused-import
 
 
+helps['peering legacy'] = """
+    type: group
+    short-summary: Commands to manage legacy peering.
+"""
+
+helps['peering legacy list'] = """
+    type: command
+    short-summary: list legacy peering.
+"""
+
+helps['-'] = """
+    type: group
+    short-summary: Commands to manage operation.
+"""
+
 helps['peering asn'] = """
     type: group
     short-summary: Commands to manage peer asn.
@@ -47,6 +62,16 @@ helps['peering asn list'] = """
 helps['peering asn show'] = """
     type: command
     short-summary: show peer asn.
+"""
+
+helps['peering locations'] = """
+    type: group
+    short-summary: Commands to manage peering location.
+"""
+
+helps['peering locations list'] = """
+    type: command
+    short-summary: list peering location.
 """
 
 helps['peering'] = """
@@ -102,6 +127,16 @@ helps['peering show'] = """
     short-summary: show peering.
 """
 
+helps['peering service location'] = """
+    type: group
+    short-summary: Commands to manage peering service location.
+"""
+
+helps['peering service location list'] = """
+    type: command
+    short-summary: list peering service location.
+"""
+
 helps['peering service prefix'] = """
     type: group
     short-summary: Commands to manage prefixes.
@@ -140,6 +175,16 @@ helps['peering service prefix list'] = """
 helps['peering service prefix show'] = """
     type: command
     short-summary: show prefixe.
+"""
+
+helps['peering service provider'] = """
+    type: group
+    short-summary: Commands to manage peering service provider.
+"""
+
+helps['peering service provider list'] = """
+    type: command
+    short-summary: list peering service provider.
 """
 
 helps['peering service'] = """

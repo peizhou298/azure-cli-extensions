@@ -1,13 +1,111 @@
 # Azure CLI Module Creation Report
 
+## -
+
 ## peering
 
+### peering create
+
+create a peering.
+
+|Option|Type|Description|Path (SDK)|Path (swagger)|
+|------|----|-----------|----------|--------------|
+|**--resource-group**|str|The name of the resource group.|resource_group_name|resourceGroupName|
+|**--name**|str|The name of the peering.|peering_name|peeringName|
+|**--kind**|str|The kind of the peering.|/kind|/kind|
+|**--location**|str|The location of the resource.|/location|/location|
+|--sku-name|str|The name of the peering SKU.|/sku/name|/sku/name|
+|--sku-tier|str|The tier of the peering SKU.|/sku/tier|/sku/tier|
+|--sku-family|str|The family of the peering SKU.|/sku/family|/sku/family|
+|--sku-size|str|The size of the peering SKU.|/sku/size|/sku/size|
+|--direct-connections|list|The set of connections that constitute a direct peering.|/direct/connections|/properties/direct/connections|
+|--direct-peer-asn|dict|The reference of the peer ASN.|/direct/peer_asn|/properties/direct/peerAsn|
+|--direct-direct-peering-type|str|The type of direct peering.|/direct/direct_peering_type|/properties/direct/directPeeringType|
+|--exchange-connections|list|The set of connections that constitute an exchange peering.|/exchange/connections|/properties/exchange/connections|
+|--exchange-peer-asn|dict|The reference of the peer ASN.|/exchange/peer_asn|/properties/exchange/peerAsn|
+|--peering-location|str|The location of the peering.|/peering_location|/properties/peeringLocation|
+|--tags|dictionary|The resource tags.|/tags|/tags|
+
+**Example: Create a direct peering**
+
+```
+peering create --resource-group rgName
+        --name peeringName
+        --sku-name Basic_Direct_Free
+        --kind Direct
+        --direct-direct-peering-type Edge
+        --peering-location peeringLocation0
+        --location eastus
+```
+
+**Example: Create an exchange peering**
+
+```
+peering create --resource-group rgName
+        --name peeringName
+        --sku-name Basic_Exchange_Free
+        --kind Exchange
+        --peering-location peeringLocation0
+        --location eastus
+```
+### peering update
+
+update a peering.
+
+|Option|Type|Description|Path (SDK)|Path (swagger)|
+|------|----|-----------|----------|--------------|
+|**--resource-group**|str|The name of the resource group.|resource_group_name|resourceGroupName|
+|**--name**|str|The name of the peering.|peering_name|peeringName|
+|**--kind**|str|The kind of the peering.|/kind|/kind|
+|**--location**|str|The location of the resource.|/location|/location|
+|--sku-name|str|The name of the peering SKU.|/sku/name|/sku/name|
+|--sku-tier|str|The tier of the peering SKU.|/sku/tier|/sku/tier|
+|--sku-family|str|The family of the peering SKU.|/sku/family|/sku/family|
+|--sku-size|str|The size of the peering SKU.|/sku/size|/sku/size|
+|--direct-connections|list|The set of connections that constitute a direct peering.|/direct/connections|/properties/direct/connections|
+|--direct-peer-asn|dict|The reference of the peer ASN.|/direct/peer_asn|/properties/direct/peerAsn|
+|--direct-direct-peering-type|str|The type of direct peering.|/direct/direct_peering_type|/properties/direct/directPeeringType|
+|--exchange-connections|list|The set of connections that constitute an exchange peering.|/exchange/connections|/properties/exchange/connections|
+|--exchange-peer-asn|dict|The reference of the peer ASN.|/exchange/peer_asn|/properties/exchange/peerAsn|
+|--peering-location|str|The location of the peering.|/peering_location|/properties/peeringLocation|
+|--tags|dictionary|The resource tags.|/tags|/tags|
+
+**Example: Update peering tags**
+
+```
+peering update --resource-group rgName
+        --name peeringName
+```
+### peering delete
+
+delete a peering.
+
+|Option|Type|Description|Path (SDK)|Path (swagger)|
+|------|----|-----------|----------|--------------|
+|**--resource-group**|str|The name of the resource group.|resource_group_name|resourceGroupName|
+|**--name**|str|The name of the peering.|peering_name|peeringName|
+
+**Example: Delete a peering**
+
+```
+peering delete --resource-group rgName
+        --name peeringName
+```
 ### peering list
 
 list a peering.
 
 |Option|Type|Description|Path (SDK)|Path (swagger)|
 |------|----|-----------|----------|--------------|
+|**--resource-group**|str|The name of the resource group.|resource_group_name|resourceGroupName|
+### peering show
+
+show a peering.
+
+|Option|Type|Description|Path (SDK)|Path (swagger)|
+|------|----|-----------|----------|--------------|
+|**--resource-group**|str|The name of the resource group.|resource_group_name|resourceGroupName|
+|**--name**|str|The name of the peering.|peering_name|peeringName|
 ## peering asn
 
 ### peering asn create
@@ -70,6 +168,26 @@ show a peering asn.
 |Option|Type|Description|Path (SDK)|Path (swagger)|
 |------|----|-----------|----------|--------------|
 |**--name**|str|The peer ASN name.|peer_asn_name|peerAsnName|
+## peering legacy
+
+### peering legacy list
+
+list a peering legacy.
+
+|Option|Type|Description|Path (SDK)|Path (swagger)|
+|------|----|-----------|----------|--------------|
+|--peering-location|str|The location of the peering.|peering_location|peeringLocation|
+|--kind|str|The kind of the peering.|kind|kind|
+## peering locations
+
+### peering locations list
+
+list a peering locations.
+
+|Option|Type|Description|Path (SDK)|Path (swagger)|
+|------|----|-----------|----------|--------------|
+|--kind|str|The kind of the peering.|kind|kind|
+|--direct-peering-type|str|The type of direct peering.|direct_peering_type|directPeeringType|
 ## peering service
 
 ### peering service create
@@ -143,6 +261,14 @@ show a peering service.
 |------|----|-----------|----------|--------------|
 |**--resource-group**|str|The name of the resource group.|resource_group_name|resourceGroupName|
 |**--name**|str|The name of the peering service.|peering_service_name|peeringServiceName|
+## peering service location
+
+### peering service location list
+
+list a peering service location.
+
+|Option|Type|Description|Path (SDK)|Path (swagger)|
+|------|----|-----------|----------|--------------|
 ## peering service prefix
 
 ### peering service prefix create
@@ -208,3 +334,11 @@ show a peering service prefix.
 |**--resource-group**|str|The name of the resource group.|resource_group_name|resourceGroupName|
 |**--peering-service-name**|str|The name of the peering service.|peering_service_name|peeringServiceName|
 |**--name**|str|The name of the prefix.|prefix_name|prefixName|
+## peering service provider
+
+### peering service provider list
+
+list a peering service provider.
+
+|Option|Type|Description|Path (SDK)|Path (swagger)|
+|------|----|-----------|----------|--------------|

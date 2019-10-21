@@ -12,6 +12,20 @@ from azure.cli.core.commands import CliCommandType
 
 def load_command_table(self, _):
 
+    from ._client_factory import cf_legacy_peerings
+    peering_legacy_peerings = CliCommandType(
+        operations_tmpl='azext_peering.vendored_sdks.peering.operations._legacy_peerings_operations#LegacyPeeringsOperations.{}',
+        client_factory=cf_legacy_peerings)
+    with self.command_group('peering legacy', peering_legacy_peerings, client_factory=cf_legacy_peerings) as g:
+        g.custom_command('list', 'list_peering_legacy')
+
+    from ._client_factory import cf_operations
+    peering_operations = CliCommandType(
+        operations_tmpl='azext_peering.vendored_sdks.peering.operations._operations_operations#OperationsOperations.{}',
+        client_factory=cf_operations)
+    with self.command_group('-', peering_operations, client_factory=cf_operations) as g:
+        g.custom_command('list', 'list__')
+
     from ._client_factory import cf_peer_asns
     peering_peer_asns = CliCommandType(
         operations_tmpl='azext_peering.vendored_sdks.peering.operations._peer_asns_operations#PeerAsnsOperations.{}',
@@ -22,6 +36,13 @@ def load_command_table(self, _):
         g.command('delete', 'delete')
         g.custom_command('list', 'list_peering_asn')
         g.show_command('show', 'get')
+
+    from ._client_factory import cf_peering_locations
+    peering_peering_locations = CliCommandType(
+        operations_tmpl='azext_peering.vendored_sdks.peering.operations._peering_locations_operations#PeeringLocationsOperations.{}',
+        client_factory=cf_peering_locations)
+    with self.command_group('peering locations', peering_peering_locations, client_factory=cf_peering_locations) as g:
+        g.custom_command('list', 'list_peering_locations')
 
     from ._client_factory import cf_peerings
     peering_peerings = CliCommandType(
@@ -34,6 +55,13 @@ def load_command_table(self, _):
         g.custom_command('list', 'list_peering')
         g.show_command('show', 'get')
 
+    from ._client_factory import cf_peering_service_locations
+    peering_peering_service_locations = CliCommandType(
+        operations_tmpl='azext_peering.vendored_sdks.peering.operations._peering_service_locations_operations#PeeringServiceLocationsOperations.{}',
+        client_factory=cf_peering_service_locations)
+    with self.command_group('peering service location', peering_peering_service_locations, client_factory=cf_peering_service_locations) as g:
+        g.custom_command('list', 'list_peering_service_location')
+
     from ._client_factory import cf_prefixes
     peering_prefixes = CliCommandType(
         operations_tmpl='azext_peering.vendored_sdks.peering.operations._prefixes_operations#PrefixesOperations.{}',
@@ -44,6 +72,13 @@ def load_command_table(self, _):
         g.command('delete', 'delete')
         g.custom_command('list', 'list_peering_service_prefix')
         g.show_command('show', 'get')
+
+    from ._client_factory import cf_peering_service_providers
+    peering_peering_service_providers = CliCommandType(
+        operations_tmpl='azext_peering.vendored_sdks.peering.operations._peering_service_providers_operations#PeeringServiceProvidersOperations.{}',
+        client_factory=cf_peering_service_providers)
+    with self.command_group('peering service provider', peering_peering_service_providers, client_factory=cf_peering_service_providers) as g:
+        g.custom_command('list', 'list_peering_service_provider')
 
     from ._client_factory import cf_peering_services
     peering_peering_services = CliCommandType(

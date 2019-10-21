@@ -23,6 +23,10 @@ from azext_peering.action import (
 def load_arguments(self, _):
     name_arg_type = CLIArgumentType(options_list=('--name', '-n'), metavar='NAME')
 
+    with self.argument_context('peering legacy list') as c:
+        c.argument('peering_location', id_part=None, help='The location of the peering.')
+        c.argument('kind', id_part=None, help='The kind of the peering.')
+
     with self.argument_context('peering asn create') as c:
         c.argument('name', id_part=None, help='The peer ASN name.')
         c.argument('peer_asn', id_part=None, help='The Autonomous System Number (ASN) of the peer.')
@@ -42,10 +46,15 @@ def load_arguments(self, _):
     with self.argument_context('peering asn delete') as c:
         c.argument('name', id_part=None, help='The peer ASN name.')
 
-    # with self.argument_context('peering asn list') as c:
+    with self.argument_context('peering asn list') as c:
+        # no args
 
     with self.argument_context('peering asn show') as c:
         c.argument('name', id_part=None, help='The peer ASN name.')
+
+    with self.argument_context('peering locations list') as c:
+        c.argument('kind', id_part=None, help='The kind of the peering.')
+        c.argument('direct_peering_type', id_part=None, help='The type of direct peering.')
 
     with self.argument_context('peering create') as c:
         c.argument('resource_group', resource_group_name_type)
@@ -92,6 +101,9 @@ def load_arguments(self, _):
         c.argument('resource_group', resource_group_name_type)
         c.argument('name', id_part=None, help='The name of the peering.')
 
+    with self.argument_context('peering service location list') as c:
+        # no args
+
     with self.argument_context('peering service prefix create') as c:
         c.argument('resource_group', resource_group_name_type)
         c.argument('peering_service_name', id_part=None, help='The name of the peering service.')
@@ -117,6 +129,9 @@ def load_arguments(self, _):
         c.argument('resource_group', resource_group_name_type)
         c.argument('peering_service_name', id_part=None, help='The name of the peering service.')
         c.argument('name', id_part=None, help='The name of the prefix.')
+
+    with self.argument_context('peering service provider list') as c:
+        # no args
 
     with self.argument_context('peering service create') as c:
         c.argument('resource_group', resource_group_name_type)

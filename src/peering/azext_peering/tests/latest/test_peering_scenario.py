@@ -23,7 +23,6 @@ class ApimgmtScenarioTest(ScenarioTest):
         })
 
 # list -- list
-# list -- list
 # create_or_update -- create
         self.cmd('peering asn create  --name "peerAsnName" --peer-asn "65000" --emails "abc@contoso.com,xyz@contoso.com" --phone "+1 (234) 567-8900" --peer-name "Contoso"', checks=[
         ])
