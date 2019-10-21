@@ -139,12 +139,12 @@ helps['peering service location list'] = """
 
 helps['peering service prefix'] = """
     type: group
-    short-summary: Commands to manage prefixes.
+    short-summary: Commands to manage prefix.
 """
 
 helps['peering service prefix create'] = """
     type: command
-    short-summary: create prefixe.
+    short-summary: create prefix.
     examples:
       - name: Create or update a prefix for the peering service
         text: |-
@@ -154,12 +154,12 @@ helps['peering service prefix create'] = """
 
 helps['peering service prefix update'] = """
     type: command
-    short-summary: update prefixe.
+    short-summary: update prefix.
 """
 
 helps['peering service prefix delete'] = """
     type: command
-    short-summary: delete prefixe.
+    short-summary: delete prefix.
     examples:
       - name: Delete a prefix associated with the peering service
         text: |-
@@ -169,12 +169,12 @@ helps['peering service prefix delete'] = """
 
 helps['peering service prefix list'] = """
     type: command
-    short-summary: list prefixe.
+    short-summary: list prefix.
 """
 
 helps['peering service prefix show'] = """
     type: command
-    short-summary: show prefixe.
+    short-summary: show prefix.
 """
 
 helps['peering service provider'] = """
