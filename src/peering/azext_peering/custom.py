@@ -20,8 +20,8 @@ def create_peering_asn(cmd, client,
                        validation_state=None):
     body = {}
     body['peer_asn'] = peer_asn  # number
-    body.setdefault('peer_contact_info', {})['emails'] = json.loads(emails) if isinstance(emails, str) else emails
-    body.setdefault('peer_contact_info', {})['phone'] = json.loads(phone) if isinstance(phone, str) else phone
+    body.setdefault('peer_contact_info', {})['emails'] = None if emails is None else emails.split(',')
+    body.setdefault('peer_contact_info', {})['phone'] = None if phone is None else phone.split(',')
     body['peer_name'] = peer_name  # str
     body['validation_state'] = validation_state  # str
     return client.create_or_update(peer_asn_name=name, peer_asn=body)
