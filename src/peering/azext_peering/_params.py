@@ -12,9 +12,7 @@ from azure.cli.core.commands.parameters import (
     resource_group_name_type,
     get_location_type
 )
-from azext_peering.action import (
-    PeeringAddDirectConnection, PeeringAddExchangeConnection
-)
+import azext_peering.action
 
 
 def load_arguments(self, _):
@@ -60,10 +58,10 @@ def load_arguments(self, _):
         c.argument('sku_family', arg_type=get_enum_type(['Direct', 'Exchange']), id_part=None, help='The family of the peering SKU.')
         c.argument('sku_size', arg_type=get_enum_type(['Free', 'Metered', 'Unlimited']), id_part=None, help='The size of the peering SKU.')
         c.argument('kind', arg_type=get_enum_type(['Direct', 'Exchange']), id_part=None, help='The kind of the peering.')
-        c.argument('direct_connections', id_part=None, help='The set of connections that constitute a direct peering.', action=PeeringAddDirectConnection, nargs='+')
+        c.argument('direct_connections', id_part=None, help='The set of connections that constitute a direct peering.', action=PeeringAddDirectConnections, nargs='+')
         c.argument('direct_peer_asn', id_part=None, help='The reference of the peer ASN.')
         c.argument('direct_direct_peering_type', arg_type=get_enum_type(['Edge', 'Transit', 'Cdn', 'Internal']), id_part=None, help='The type of direct peering.')
-        c.argument('exchange_connections', id_part=None, help='The set of connections that constitute an exchange peering.', action=PeeringAddExchangeConnection, nargs='+')
+        c.argument('exchange_connections', id_part=None, help='The set of connections that constitute an exchange peering.', action=PeeringAddExchangeConnections, nargs='+')
         c.argument('exchange_peer_asn', id_part=None, help='The reference of the peer ASN.')
         c.argument('peering_location', id_part=None, help='The location of the peering.')
         c.argument('location', arg_type=get_location_type(self.cli_ctx))
@@ -77,10 +75,10 @@ def load_arguments(self, _):
         c.argument('sku_family', arg_type=get_enum_type(['Direct', 'Exchange']), id_part=None, help='The family of the peering SKU.')
         c.argument('sku_size', arg_type=get_enum_type(['Free', 'Metered', 'Unlimited']), id_part=None, help='The size of the peering SKU.')
         c.argument('kind', arg_type=get_enum_type(['Direct', 'Exchange']), id_part=None, help='The kind of the peering.')
-        c.argument('direct_connections', id_part=None, help='The set of connections that constitute a direct peering.')
+        c.argument('direct_connections', id_part=None, help='The set of connections that constitute a direct peering.', action=PeeringAddDirectConnections, nargs='+')
         c.argument('direct_peer_asn', id_part=None, help='The reference of the peer ASN.')
         c.argument('direct_direct_peering_type', arg_type=get_enum_type(['Edge', 'Transit', 'Cdn', 'Internal']), id_part=None, help='The type of direct peering.')
-        c.argument('exchange_connections', id_part=None, help='The set of connections that constitute an exchange peering.')
+        c.argument('exchange_connections', id_part=None, help='The set of connections that constitute an exchange peering.', action=PeeringAddExchangeConnections, nargs='+')
         c.argument('exchange_peer_asn', id_part=None, help='The reference of the peer ASN.')
         c.argument('peering_location', id_part=None, help='The location of the peering.')
         c.argument('location', arg_type=get_location_type(self.cli_ctx))

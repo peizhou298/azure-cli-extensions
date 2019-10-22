@@ -14,7 +14,7 @@ from knack.util import CLIError
 
 
 # pylint: disable=protected-access
-class PeeringAddDirectConnection(argparse._AppendAction):
+class PeeringAddDirectConnections(argparse._AppendAction):
     def __call__(self, parser, namespace, values, option_string=None):
         action = self.get_action(values, option_string)
         super(PeeringAddDirectConnection, self).__call__(parser, namespace, action, option_string)
@@ -54,7 +54,7 @@ class PeeringAddDirectConnection(argparse._AppendAction):
 
 
 # pylint: disable=protected-access
-class PeeringAddExchangeConnection(argparse._AppendAction):
+class PeeringAddExchangeConnections(argparse._AppendAction):
     def __call__(self, parser, namespace, values, option_string=None):
         action = self.get_action(values, option_string)
         super(PeeringAddExchangeConnection, self).__call__(parser, namespace, action, option_string)
