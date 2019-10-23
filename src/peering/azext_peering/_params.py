@@ -12,7 +12,10 @@ from azure.cli.core.commands.parameters import (
     resource_group_name_type,
     get_location_type
 )
-import azext_peering.action
+from azext_peering.action import (
+    PeeringAddDirectConnections,
+    PeeringAddExchangeConnections
+)
 
 
 def load_arguments(self, _):
