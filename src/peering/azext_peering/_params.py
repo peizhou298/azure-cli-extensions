@@ -46,7 +46,7 @@ def load_arguments(self, _):
     with self.argument_context('peering asn show') as c:
         c.argument('name', id_part=None, help='The peer ASN name.')
 
-    with self.argument_context('peering locations list') as c:
+    with self.argument_context('peering location list') as c:
         c.argument('kind', id_part=None, help='The kind of the peering.')
         c.argument('direct_peering_type', id_part=None, help='The type of direct peering.')
 

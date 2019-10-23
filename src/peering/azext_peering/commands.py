@@ -41,8 +41,8 @@ def load_command_table(self, _):
     peering_peering_locations = CliCommandType(
         operations_tmpl='azext_peering.vendored_sdks.peering.operations._peering_locations_operations#PeeringLocationsOperations.{}',
         client_factory=cf_peering_locations)
-    with self.command_group('peering locations', peering_peering_locations, client_factory=cf_peering_locations) as g:
-        g.custom_command('list', 'list_peering_locations')
+    with self.command_group('peering location', peering_peering_locations, client_factory=cf_peering_locations) as g:
+        g.custom_command('list', 'list_peering_location')
 
     from ._client_factory import cf_peerings
     peering_peerings = CliCommandType(

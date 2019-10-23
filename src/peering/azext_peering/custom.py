@@ -52,9 +52,9 @@ def list_peering_asn(cmd, client):
     return client.list_by_subscription()
 
 
-def list_peering_locations(cmd, client,
-                           kind=None,
-                           direct_peering_type=None):
+def list_peering_location(cmd, client,
+                          kind=None,
+                          direct_peering_type=None):
     return client.list(kind=kind, direct_peering_type=direct_peering_type)
 
 

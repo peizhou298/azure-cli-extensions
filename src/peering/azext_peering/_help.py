@@ -35,7 +35,7 @@ helps['peering asn create'] = """
     examples:
       - name: Create a peer ASN
         text: |-
-               az peering asn create --name "peerAsnName" --peer-asn "65000" --emails \\
+               az peering asn create --name "MyPeerAsn" --peer-asn "65000" --emails \\
                "abc@contoso.com,xyz@contoso.com" --phone "+1 (234) 567-8900" --peer-name "Contoso" \\
                --validation-state Approved
 """
@@ -51,7 +51,7 @@ helps['peering asn delete'] = """
     examples:
       - name: Delete a peer ASN
         text: |-
-               az peering asn delete --name "peerAsnName"
+               az peering asn delete --name "MyPeerAsn"
 """
 
 helps['peering asn list'] = """
@@ -64,12 +64,12 @@ helps['peering asn show'] = """
     short-summary: show peer asn.
 """
 
-helps['peering locations'] = """
+helps['peering location'] = """
     type: group
     short-summary: Commands to manage peering location.
 """
 
-helps['peering locations list'] = """
+helps['peering location list'] = """
     type: command
     short-summary: list peering location.
 """
@@ -85,7 +85,7 @@ helps['peering create'] = """
     examples:
       - name: Create a direct peering
         text: |-
-               az peering create --resource-group "rgName" --name "peeringName" --sku-name \\
+               az peering create --resource-group "MyResourceGroup" --name "MyPeering" --sku-name \\
                "Basic_Direct_Free" --kind "Direct" --direct-direct-peering-type "Edge" \\
                --peering-location "peeringLocation0" --location "eastus" \\
                --direct-connections bandwidthInMbps=10000 sessionAddressProvider=Peer \\
@@ -105,7 +105,7 @@ helps['peering update'] = """
     examples:
       - name: Update peering tags
         text: |-
-               az peering update --resource-group "rgName" --name "peeringName"
+               az peering update --resource-group "MyResourceGroup" --name "MyPeering"
 """
 
 helps['peering delete'] = """
@@ -114,7 +114,7 @@ helps['peering delete'] = """
     examples:
       - name: Delete a peering
         text: |-
-               az peering delete --resource-group "rgName" --name "peeringName"
+               az peering delete --resource-group "MyResourceGroup" --name "MyPeering"
 """
 
 helps['peering list'] = """
@@ -148,8 +148,9 @@ helps['peering service prefix create'] = """
     examples:
       - name: Create or update a prefix for the peering service
         text: |-
-               az peering service prefix create --resource-group "rgName" --peering-service-name \\
-               "peeringServiceName" --name "peeringServicePrefixName" --prefix "192.168.1.0/24"
+               az peering service prefix create --resource-group "MyResourceGroup" \\
+               --peering-service-name "MyPeeringService" --name "MyPeeringServicePrefix" --prefix \\
+               "192.168.1.0/24"
 """
 
 helps['peering service prefix update'] = """
@@ -163,8 +164,8 @@ helps['peering service prefix delete'] = """
     examples:
       - name: Delete a prefix associated with the peering service
         text: |-
-               az peering service prefix delete --resource-group "rgName" --peering-service-name \\
-               "peeringServiceName" --name "peeringServicePrefixName"
+               az peering service prefix delete --resource-group "MyResourceGroup" \\
+               --peering-service-name "MyPeeringService" --name "MyPeeringServicePrefix"
 """
 
 helps['peering service prefix list'] = """
@@ -198,7 +199,7 @@ helps['peering service create'] = """
     examples:
       - name: Create a  peering service
         text: |-
-               az peering service create --resource-group "rgName" --name "peeringServiceName" \\
+               az peering service create --resource-group "MyResourceGroup" --name "MyPeeringService" \\
                --peering-service-location "state1" --peering-service-provider "serviceProvider1" \\
                --location "eastus"
 """
@@ -209,7 +210,7 @@ helps['peering service update'] = """
     examples:
       - name: Update peering service tags
         text: |-
-               az peering service update --resource-group "rgName" --name "peeringServiceName"
+               az peering service update --resource-group "MyResourceGroup" --name "MyPeeringService"
 """
 
 helps['peering service delete'] = """
@@ -218,7 +219,7 @@ helps['peering service delete'] = """
     examples:
       - name: Delete a peering service
         text: |-
-               az peering service delete --resource-group "rgName" --name "peeringServiceName"
+               az peering service delete --resource-group "MyResourceGroup" --name "MyPeeringService"
 """
 
 helps['peering service list'] = """

@@ -18,10 +18,10 @@ create a peering.
 |--sku-tier|str|The tier of the peering SKU.|/sku/tier|/sku/tier|
 |--sku-family|str|The family of the peering SKU.|/sku/family|/sku/family|
 |--sku-size|str|The size of the peering SKU.|/sku/size|/sku/size|
-|--direct-connections|list|The set of connections that constitute a direct peering.|/direct/connections|/properties/direct/connections|
+|--direct-connections|dict|The set of connections that constitute a direct peering.|/direct/connections|/properties/direct/connections|
 |--direct-peer-asn|dict|The reference of the peer ASN.|/direct/peer_asn|/properties/direct/peerAsn|
 |--direct-direct-peering-type|str|The type of direct peering.|/direct/direct_peering_type|/properties/direct/directPeeringType|
-|--exchange-connections|list|The set of connections that constitute an exchange peering.|/exchange/connections|/properties/exchange/connections|
+|--exchange-connections|dict|The set of connections that constitute an exchange peering.|/exchange/connections|/properties/exchange/connections|
 |--exchange-peer-asn|dict|The reference of the peer ASN.|/exchange/peer_asn|/properties/exchange/peerAsn|
 |--peering-location|str|The location of the peering.|/peering_location|/properties/peeringLocation|
 |--tags|dictionary|The resource tags.|/tags|/tags|
@@ -29,8 +29,8 @@ create a peering.
 **Example: Create a direct peering**
 
 ```
-peering create --resource-group rgName
-        --name peeringName
+peering create --resource-group MyResourceGroup
+        --name MyPeering
         --sku-name Basic_Direct_Free
         --kind Direct
         --direct-direct-peering-type Edge
@@ -41,8 +41,8 @@ peering create --resource-group rgName
 **Example: Create an exchange peering**
 
 ```
-peering create --resource-group rgName
-        --name peeringName
+peering create --resource-group MyResourceGroup
+        --name MyPeering
         --sku-name Basic_Exchange_Free
         --kind Exchange
         --peering-location peeringLocation0
@@ -62,10 +62,10 @@ update a peering.
 |--sku-tier|str|The tier of the peering SKU.|/sku/tier|/sku/tier|
 |--sku-family|str|The family of the peering SKU.|/sku/family|/sku/family|
 |--sku-size|str|The size of the peering SKU.|/sku/size|/sku/size|
-|--direct-connections|list|The set of connections that constitute a direct peering.|/direct/connections|/properties/direct/connections|
+|--direct-connections|dict|The set of connections that constitute a direct peering.|/direct/connections|/properties/direct/connections|
 |--direct-peer-asn|dict|The reference of the peer ASN.|/direct/peer_asn|/properties/direct/peerAsn|
 |--direct-direct-peering-type|str|The type of direct peering.|/direct/direct_peering_type|/properties/direct/directPeeringType|
-|--exchange-connections|list|The set of connections that constitute an exchange peering.|/exchange/connections|/properties/exchange/connections|
+|--exchange-connections|dict|The set of connections that constitute an exchange peering.|/exchange/connections|/properties/exchange/connections|
 |--exchange-peer-asn|dict|The reference of the peer ASN.|/exchange/peer_asn|/properties/exchange/peerAsn|
 |--peering-location|str|The location of the peering.|/peering_location|/properties/peeringLocation|
 |--tags|dictionary|The resource tags.|/tags|/tags|
@@ -73,8 +73,8 @@ update a peering.
 **Example: Update peering tags**
 
 ```
-peering update --resource-group rgName
-        --name peeringName
+peering update --resource-group MyResourceGroup
+        --name MyPeering
 ```
 ### peering delete
 
@@ -88,8 +88,8 @@ delete a peering.
 **Example: Delete a peering**
 
 ```
-peering delete --resource-group rgName
-        --name peeringName
+peering delete --resource-group MyResourceGroup
+        --name MyPeering
 ```
 ### peering list
 
@@ -116,15 +116,15 @@ create a peering asn.
 |------|----|-----------|----------|--------------|
 |**--name**|str|The peer ASN name.|peer_asn_name|peerAsnName|
 |--peer-asn|number|The Autonomous System Number (ASN) of the peer.|/peer_asn|/properties/peerAsn|
-|--emails|list|The list of email addresses.|/peer_contact_info/emails|/properties/peerContactInfo/emails|
-|--phone|list|The list of contact numbers.|/peer_contact_info/phone|/properties/peerContactInfo/phone|
+|--emails|str|The list of email addresses.|/peer_contact_info/emails|/properties/peerContactInfo/emails|
+|--phone|str|The list of contact numbers.|/peer_contact_info/phone|/properties/peerContactInfo/phone|
 |--peer-name|str|The name of the peer.|/peer_name|/properties/peerName|
 |--validation-state|str|The validation state of the ASN associated with the peer.|/validation_state|/properties/validationState|
 
 **Example: Create a peer ASN**
 
 ```
-peering asn create --name peerAsnName
+peering asn create --name MyPeerAsn
         --peer-asn 65000
         --emails abc@contoso.com,xyz@contoso.com
         --phone "+1 (234) 567-8900"
@@ -138,8 +138,8 @@ update a peering asn.
 |------|----|-----------|----------|--------------|
 |**--name**|str|The peer ASN name.|peer_asn_name|peerAsnName|
 |--peer-asn|number|The Autonomous System Number (ASN) of the peer.|/peer_asn|/properties/peerAsn|
-|--emails|list|The list of email addresses.|/peer_contact_info/emails|/properties/peerContactInfo/emails|
-|--phone|list|The list of contact numbers.|/peer_contact_info/phone|/properties/peerContactInfo/phone|
+|--emails|str|The list of email addresses.|/peer_contact_info/emails|/properties/peerContactInfo/emails|
+|--phone|str|The list of contact numbers.|/peer_contact_info/phone|/properties/peerContactInfo/phone|
 |--peer-name|str|The name of the peer.|/peer_name|/properties/peerName|
 |--validation-state|str|The validation state of the ASN associated with the peer.|/validation_state|/properties/validationState|
 ### peering asn delete
@@ -153,7 +153,7 @@ delete a peering asn.
 **Example: Delete a peer ASN**
 
 ```
-peering asn delete --name peerAsnName
+peering asn delete --name MyPeerAsn
 ```
 ### peering asn list
 
@@ -178,11 +178,11 @@ list a peering legacy.
 |------|----|-----------|----------|--------------|
 |--peering-location|str|The location of the peering.|peering_location|peeringLocation|
 |--kind|str|The kind of the peering.|kind|kind|
-## peering locations
+## peering location
 
-### peering locations list
+### peering location list
 
-list a peering locations.
+list a peering location.
 
 |Option|Type|Description|Path (SDK)|Path (swagger)|
 |------|----|-----------|----------|--------------|
@@ -206,8 +206,8 @@ create a peering service.
 **Example: Create a  peering service**
 
 ```
-peering service create --resource-group rgName
-        --name peeringServiceName
+peering service create --resource-group MyResourceGroup
+        --name MyPeeringService
         --peering-service-location state1
         --peering-service-provider serviceProvider1
         --location eastus
@@ -228,8 +228,8 @@ update a peering service.
 **Example: Update peering service tags**
 
 ```
-peering service update --resource-group rgName
-        --name peeringServiceName
+peering service update --resource-group MyResourceGroup
+        --name MyPeeringService
 ```
 ### peering service delete
 
@@ -243,8 +243,8 @@ delete a peering service.
 **Example: Delete a peering service**
 
 ```
-peering service delete --resource-group rgName
-        --name peeringServiceName
+peering service delete --resource-group MyResourceGroup
+        --name MyPeeringService
 ```
 ### peering service list
 
@@ -285,9 +285,9 @@ create a peering service prefix.
 **Example: Create or update a prefix for the peering service**
 
 ```
-peering service prefix create --resource-group rgName
-        --peering-service-name peeringServiceName
-        --name peeringServicePrefixName
+peering service prefix create --resource-group MyResourceGroup
+        --peering-service-name MyPeeringService
+        --name MyPeeringServicePrefix
         --prefix 192.168.1.0/24
 ```
 ### peering service prefix update
@@ -313,9 +313,9 @@ delete a peering service prefix.
 **Example: Delete a prefix associated with the peering service**
 
 ```
-peering service prefix delete --resource-group rgName
-        --peering-service-name peeringServiceName
-        --name peeringServicePrefixName
+peering service prefix delete --resource-group MyResourceGroup
+        --peering-service-name MyPeeringService
+        --name MyPeeringServicePrefix
 ```
 ### peering service prefix list
 
