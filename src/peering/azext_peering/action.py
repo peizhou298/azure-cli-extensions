@@ -17,7 +17,7 @@ from knack.util import CLIError
 class PeeringAddDirectConnections(argparse._AppendAction):
     def __call__(self, parser, namespace, values, option_string=None):
         action = self.get_action(values, option_string)
-        super(PeeringAddDirectConnection, self).__call__(parser, namespace, action, option_string)
+        super(PeeringAddDirectConnections, self).__call__(parser, namespace, action, option_string)
 
     def get_action(self, values, option_string):  # pylint: disable=no-self-use
         try:
@@ -57,7 +57,7 @@ class PeeringAddDirectConnections(argparse._AppendAction):
 class PeeringAddExchangeConnections(argparse._AppendAction):
     def __call__(self, parser, namespace, values, option_string=None):
         action = self.get_action(values, option_string)
-        super(PeeringAddExchangeConnection, self).__call__(parser, namespace, action, option_string)
+        super(PeeringAddExchangeConnections, self).__call__(parser, namespace, action, option_string)
 
     def get_action(self, values, option_string):  # pylint: disable=no-self-use
         try:
