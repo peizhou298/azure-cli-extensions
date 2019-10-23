@@ -102,7 +102,7 @@ def load_arguments(self, _):
         c.argument('resource_group', resource_group_name_type)
         c.argument('peering_service_name', id_part=None, help='The name of the peering service.')
         c.argument('name', id_part=None, help='The name of the prefix.')
-        c.argument('prefix', id_part=None, help='The prefix from which your traffic originates.')
+        c.argument('prefix', id_part=None, help='The prefix from which your traffic originates.', required=True)
 
     with self.argument_context('peering service prefix update') as c:
         c.argument('resource_group', resource_group_name_type)
@@ -130,8 +130,8 @@ def load_arguments(self, _):
     with self.argument_context('peering service create') as c:
         c.argument('resource_group', resource_group_name_type)
         c.argument('name', id_part=None, help='The name of the peering service.')
-        c.argument('peering_service_location', id_part=None, help='The PeeringServiceLocation of the Customer.')
-        c.argument('peering_service_provider', id_part=None, help='The MAPS Provider Name.')
+        c.argument('peering_service_location', id_part=None, help='The PeeringServiceLocation of the Customer.', required=True)
+        c.argument('peering_service_provider', id_part=None, help='The MAPS Provider Name.', required=True)
         c.argument('location', arg_type=get_location_type(self.cli_ctx))
         c.argument('tags', tags_type)
 
