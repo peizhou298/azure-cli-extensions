@@ -85,3 +85,26 @@ helps['healthcareapis show'] = """
         text: |-
                az healthcareapis show --resource-group "rg1" --name "service1"
 """
+
+helps['healthcareapis view'] = """
+    type: group
+    short-summary: Commands to manage anonymized view.
+"""
+
+helps['healthcareapis show'] = """
+    type: command
+    short-summary: Show anonymized view.
+    examples:
+      - name: Show anoymized view
+        text: |-
+               az healthcareapis view show --resource-group "rg1" --name "service1" --view "view1"
+"""
+
+helps['healthcareapis create'] = """
+    type: command
+    short-summary: Create an anonymized view.
+    examples:
+      - name: Create anoymized view
+        text: |-
+               az healthcareapis view create --resource-group "rg1" --name "service1" --view "view1" --config "."
+"""

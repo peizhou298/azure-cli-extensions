@@ -117,3 +117,30 @@ def delete_healthcareapis(cmd, client,
                           resource_group,
                           name):
     return client.delete(resource_group_name=resource_group, resource_name=name)
+
+
+def show_anonymizedView(cmd, client,
+                        resource_group,
+                        name,
+                        view):
+    return client.get(resource_group_name=resource_group, resource_name=name, anonymized_view_name=view)
+
+
+def create_anonymizedView(cmd, client,
+                        resource_group,
+                        kind,
+                        location,
+                        name,
+                        view,
+                        config="config.json"):
+    from json import loads
+    with open(config, 'r') as myfile:
+        data=myfile.read()
+
+    annoymized_view_description = {}
+    annoymized_view_description['location'] = location
+    annoymized_view_description['kind'] = kind
+    annoymized_view_description['properties'] = {}
+    annoymized_view_description['properties']['anonymized_view_config'] = loads(data)
+
+    return client.create_or_update(resource_group_name=resource_group, resource_name=name, anonymized_view_name=view, anonymized_views_description=annoymized_view_description)

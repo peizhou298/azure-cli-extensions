@@ -11,12 +11,45 @@
 
 from msrest.service_client import SDKClient
 from msrest import Serializer, Deserializer
-
-from ._configuration import HealthcareApisManagementClientConfiguration
-from .operations import ServicesOperations
-from .operations import Operations
-from .operations import OperationResultsOperations
+from msrestazure import AzureConfiguration
+from .version import VERSION
+from .operations.anonymized_views_operations import AnonymizedViewsOperations
+from .operations.services_operations import ServicesOperations
+from .operations.operations import Operations
+from .operations.operation_results_operations import OperationResultsOperations
 from . import models
+
+
+class HealthcareApisManagementClientConfiguration(AzureConfiguration):
+    """Configuration for HealthcareApisManagementClient
+    Note that all parameters used to create this instance are saved as instance
+    attributes.
+
+    :param credentials: Credentials needed for the client to connect to Azure.
+    :type credentials: :mod:`A msrestazure Credentials
+     object<msrestazure.azure_active_directory>`
+    :param subscription_id: The subscription identifier.
+    :type subscription_id: str
+    :param str base_url: Service URL
+    """
+
+    def __init__(
+            self, credentials, subscription_id, base_url=None):
+
+        if credentials is None:
+            raise ValueError("Parameter 'credentials' must not be None.")
+        if subscription_id is None:
+            raise ValueError("Parameter 'subscription_id' must not be None.")
+        if not base_url:
+            base_url = 'https://management.azure.com'
+
+        super(HealthcareApisManagementClientConfiguration, self).__init__(base_url)
+
+        self.add_user_agent('azure-mgmt-healthcareapis/{}'.format(VERSION))
+        self.add_user_agent('Azure-SDK-For-Python')
+
+        self.credentials = credentials
+        self.subscription_id = subscription_id
 
 
 class HealthcareApisManagementClient(SDKClient):
@@ -25,6 +58,8 @@ class HealthcareApisManagementClient(SDKClient):
     :ivar config: Configuration for client.
     :vartype config: HealthcareApisManagementClientConfiguration
 
+    :ivar anonymized_views: AnonymizedViews operations
+    :vartype anonymized_views: azure.mgmt.healthcareapis.operations.AnonymizedViewsOperations
     :ivar services: Services operations
     :vartype services: azure.mgmt.healthcareapis.operations.ServicesOperations
     :ivar operations: Operations operations
@@ -51,6 +86,8 @@ class HealthcareApisManagementClient(SDKClient):
         self._serialize = Serializer(client_models)
         self._deserialize = Deserializer(client_models)
 
+        self.anonymized_views = AnonymizedViewsOperations(
+            self._client, self.config, self._serialize, self._deserialize)
         self.services = ServicesOperations(
             self._client, self.config, self._serialize, self._deserialize)
         self.operations = Operations(

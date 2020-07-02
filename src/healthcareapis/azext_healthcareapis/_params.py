@@ -62,3 +62,16 @@ def load_arguments(self, _):
     with self.argument_context('healthcareapis show') as c:
         c.argument('resource_group', resource_group_name_type)
         c.argument('name', id_part=None, help='The name of the service instance.')
+    
+    with self.argument_context('healthcareapis view show') as c:
+        c.argument('resource_group', resource_group_name_type)
+        c.argument('name', id_part=None, help='The name of the service instance.')
+        c.argument('view', id_part=None, help='The name of the anonymized view.')
+    
+    with self.argument_context('healthcareapis view create') as c:
+        c.argument('resource_group', resource_group_name_type)
+        c.argument('name', id_part=None, help='The name of the service instance.')
+        c.argument('kind', arg_type=get_enum_type(['fhir', 'fhir-Stu3', 'fhir-R4']), id_part=None, help='The kind of the service.')
+        c.argument('location', arg_type=get_location_type(self.cli_ctx))
+        c.argument('view', id_part=None, help='The name of the anonymized view.')
+        c.argument('config', help='The path of the configuration file.')

@@ -12,9 +12,12 @@ from azure.cli.core.commands import CliCommandType
 
 def load_command_table(self, _):
 
-    from ._client_factory import cf_services
+    from ._client_factory import (cf_services,cf_anonymized_views)
     healthcareapis_services = CliCommandType(
         operations_tmpl='azext_healthcare.vendored_sdks.healthcareapis.operations._services_operations#ServicesOperations.{}',
+        client_factory=cf_services)
+    healthcareapis_view = CliCommandType(
+        operations_tmpl='azext_healthcare.vendored_sdks.healthcareapis.operations.anonymized_views_operations#anonymized_views_operations.{}',
         client_factory=cf_services)
     with self.command_group('healthcareapis', healthcareapis_services, client_factory=cf_services) as g:
         g.custom_command('create', 'create_healthcareapis')
@@ -22,3 +25,7 @@ def load_command_table(self, _):
         g.custom_command('delete', 'delete_healthcareapis')
         g.custom_command('list', 'list_healthcareapis')
         g.custom_command('show', 'show_healthcareapis')
+    
+    with self.command_group('healthcareapis view', healthcareapis_view, client_factory=cf_anonymized_views) as g:
+        g.custom_command('show', 'show_anonymizedView')
+        g.custom_command('create', 'create_anonymizedView')

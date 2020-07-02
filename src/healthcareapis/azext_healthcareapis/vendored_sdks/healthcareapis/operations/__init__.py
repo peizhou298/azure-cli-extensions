@@ -9,11 +9,13 @@
 # regenerated.
 # --------------------------------------------------------------------------
 
-from ._services_operations import ServicesOperations
-from ._operations import Operations
-from ._operation_results_operations import OperationResultsOperations
+from .anonymized_views_operations import AnonymizedViewsOperations
+from .services_operations import ServicesOperations
+from .operations import Operations
+from .operation_results_operations import OperationResultsOperations
 
 __all__ = [
+    'AnonymizedViewsOperations',
     'ServicesOperations',
     'Operations',
     'OperationResultsOperations',

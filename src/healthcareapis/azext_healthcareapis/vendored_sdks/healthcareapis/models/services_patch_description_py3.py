@@ -9,10 +9,20 @@
 # regenerated.
 # --------------------------------------------------------------------------
 
-from .healthcare_apis_management_client import HealthcareApisManagementClient
-from .version import VERSION
+from msrest.serialization import Model
 
-__all__ = ['HealthcareApisManagementClient']
 
-__version__ = VERSION
+class ServicesPatchDescription(Model):
+    """The description of the service.
 
+    :param tags: Instance tags
+    :type tags: dict[str, str]
+    """
+
+    _attribute_map = {
+        'tags': {'key': 'tags', 'type': '{str}'},
+    }
+
+    def __init__(self, *, tags=None, **kwargs) -> None:
+        super(ServicesPatchDescription, self).__init__(**kwargs)
+        self.tags = tags

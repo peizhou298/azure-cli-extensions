@@ -20,8 +20,6 @@ from .. import models
 class ServicesOperations(object):
     """ServicesOperations operations.
 
-    You should not instantiate directly this class, but create a Client instance that will create it for you and attach it as attribute.
-
     :param client: Client for service requests.
     :param config: Configuration of service client.
     :param serializer: An object model serializer.
@@ -91,6 +89,7 @@ class ServicesOperations(object):
             raise models.ErrorDetailsException(self._deserialize, response)
 
         deserialized = None
+
         if response.status_code == 200:
             deserialized = self._deserialize('ServicesDescription', response)
 
@@ -99,7 +98,7 @@ class ServicesOperations(object):
             return client_raw_response
 
         return deserialized
-    get.metadata = {'url': '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}'}
+    get.metadata = {'url': '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApispeizhou/services/{resourceName}'}
 
 
     def _create_or_update_initial(
@@ -202,7 +201,7 @@ class ServicesOperations(object):
         elif polling is False: polling_method = NoPolling()
         else: polling_method = polling
         return LROPoller(self._client, raw_result, get_long_running_output, polling_method)
-    create_or_update.metadata = {'url': '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}'}
+    create_or_update.metadata = {'url': '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApispeizhou/services/{resourceName}'}
 
 
     def _update_initial(
@@ -304,7 +303,7 @@ class ServicesOperations(object):
         elif polling is False: polling_method = NoPolling()
         else: polling_method = polling
         return LROPoller(self._client, raw_result, get_long_running_output, polling_method)
-    update.metadata = {'url': '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}'}
+    update.metadata = {'url': '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApispeizhou/services/{resourceName}'}
 
 
     def _delete_initial(
@@ -383,7 +382,7 @@ class ServicesOperations(object):
         elif polling is False: polling_method = NoPolling()
         else: polling_method = polling
         return LROPoller(self._client, raw_result, get_long_running_output, polling_method)
-    delete.metadata = {'url': '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}'}
+    delete.metadata = {'url': '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApispeizhou/services/{resourceName}'}
 
     def list(
             self, custom_headers=None, raw=False, **operation_config):
@@ -400,7 +399,8 @@ class ServicesOperations(object):
         :raises:
          :class:`ErrorDetailsException<azure.mgmt.healthcareapis.models.ErrorDetailsException>`
         """
-        def prepare_request(next_link=None):
+        def internal_paging(next_link=None, raw=False):
+
             if not next_link:
                 # Construct URL
                 url = self.list.metadata['url']
@@ -429,11 +429,6 @@ class ServicesOperations(object):
 
             # Construct and send request
             request = self._client.get(url, query_parameters, header_parameters)
-            return request
-
-        def internal_paging(next_link=None):
-            request = prepare_request(next_link)
-
             response = self._client.send(request, stream=False, **operation_config)
 
             if response.status_code not in [200]:
@@ -442,13 +437,15 @@ class ServicesOperations(object):
             return response
 
         # Deserialize response
-        header_dict = None
+        deserialized = models.ServicesDescriptionPaged(internal_paging, self._deserialize.dependencies)
+
         if raw:
             header_dict = {}
-        deserialized = models.ServicesDescriptionPaged(internal_paging, self._deserialize.dependencies, header_dict)
+            client_raw_response = models.ServicesDescriptionPaged(internal_paging, self._deserialize.dependencies, header_dict)
+            return client_raw_response
 
         return deserialized
-    list.metadata = {'url': '/subscriptions/{subscriptionId}/providers/Microsoft.HealthcareApis/services'}
+    list.metadata = {'url': '/subscriptions/{subscriptionId}/providers/Microsoft.HealthcareApispeizhou/services'}
 
     def list_by_resource_group(
             self, resource_group_name, custom_headers=None, raw=False, **operation_config):
@@ -468,7 +465,8 @@ class ServicesOperations(object):
         :raises:
          :class:`ErrorDetailsException<azure.mgmt.healthcareapis.models.ErrorDetailsException>`
         """
-        def prepare_request(next_link=None):
+        def internal_paging(next_link=None, raw=False):
+
             if not next_link:
                 # Construct URL
                 url = self.list_by_resource_group.metadata['url']
@@ -498,11 +496,6 @@ class ServicesOperations(object):
 
             # Construct and send request
             request = self._client.get(url, query_parameters, header_parameters)
-            return request
-
-        def internal_paging(next_link=None):
-            request = prepare_request(next_link)
-
             response = self._client.send(request, stream=False, **operation_config)
 
             if response.status_code not in [200]:
@@ -511,13 +504,15 @@ class ServicesOperations(object):
             return response
 
         # Deserialize response
-        header_dict = None
+        deserialized = models.ServicesDescriptionPaged(internal_paging, self._deserialize.dependencies)
+
         if raw:
             header_dict = {}
-        deserialized = models.ServicesDescriptionPaged(internal_paging, self._deserialize.dependencies, header_dict)
+            client_raw_response = models.ServicesDescriptionPaged(internal_paging, self._deserialize.dependencies, header_dict)
+            return client_raw_response
 
         return deserialized
-    list_by_resource_group.metadata = {'url': '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services'}
+    list_by_resource_group.metadata = {'url': '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApispeizhou/services'}
 
     def check_name_availability(
             self, name, type, custom_headers=None, raw=False, **operation_config):
@@ -574,6 +569,7 @@ class ServicesOperations(object):
             raise models.ErrorDetailsException(self._deserialize, response)
 
         deserialized = None
+
         if response.status_code == 200:
             deserialized = self._deserialize('ServicesNameAvailabilityInfo', response)
 
@@ -582,4 +578,4 @@ class ServicesOperations(object):
             return client_raw_response
 
         return deserialized
-    check_name_availability.metadata = {'url': '/subscriptions/{subscriptionId}/providers/Microsoft.HealthcareApis/checkNameAvailability'}
+    check_name_availability.metadata = {'url': '/subscriptions/{subscriptionId}/providers/Microsoft.HealthcareApispeizhou/checkNameAvailability'}
