@@ -68,3 +68,25 @@ def healthcareapis_operation_result_show(cmd, client,
                                          operation_result_id):
     return client.get(location_name=location_name,
                       operation_result_id=operation_result_id)
+
+def healthcareapis_service_update_acr(cmd, client,
+                                  resource_group_name,
+                                  resource_name,
+                                  login_server):
+    
+    service_description = client.get(
+            resource_group_name=resource_group_name,
+            resource_name=resource_name)
+    
+    if service_description.properties.acr_configuration.login_server == login_server:
+        return service_description
+         
+    service_description.properties.acr_configuration.login_server = login_server
+    return client.begin_create_or_update(resource_group_name=resource_group_name,
+                                         resource_name=resource_name,
+                                         kind=service_description.kind,
+                                         location=service_description.location,
+                                         tags=service_description.tags,
+                                         etag=service_description.etag,
+                                         identity=service_description.identity,
+                                         properties=service_description.properties)

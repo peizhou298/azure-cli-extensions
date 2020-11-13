@@ -511,6 +511,27 @@ class ServiceExportConfigurationInfo(msrest.serialization.Model):
         self.storage_account_name = storage_account_name
 
 
+class ServiceAcrConfigurationInfo(msrest.serialization.Model):
+    """Export operation configuration information.
+
+    :param storage_account_name: The name of the default export storage account.
+    :type storage_account_name: str
+    """
+
+    _attribute_map = {
+        'login_server': {'key': 'loginServer', 'type': 'str'},
+    }
+
+    def __init__(
+        self,
+        *,
+        login_server: Optional[str] = None,
+        **kwargs
+    ):
+        super(ServiceAcrConfigurationInfo, self).__init__(**kwargs)
+        self.login_server = login_server
+
+
 class ServicesDescription(Resource):
     """The description of the service.
 
@@ -694,6 +715,7 @@ class ServicesProperties(msrest.serialization.Model):
         'authentication_configuration': {'key': 'authenticationConfiguration', 'type': 'ServiceAuthenticationConfigurationInfo'},
         'cors_configuration': {'key': 'corsConfiguration', 'type': 'ServiceCorsConfigurationInfo'},
         'export_configuration': {'key': 'exportConfiguration', 'type': 'ServiceExportConfigurationInfo'},
+        'acr_configuration': {'key': 'acrConfiguration', 'type': 'ServiceAcrConfigurationInfo'},
     }
 
     def __init__(
@@ -704,6 +726,7 @@ class ServicesProperties(msrest.serialization.Model):
         authentication_configuration: Optional["ServiceAuthenticationConfigurationInfo"] = None,
         cors_configuration: Optional["ServiceCorsConfigurationInfo"] = None,
         export_configuration: Optional["ServiceExportConfigurationInfo"] = None,
+        acr_configuration: Optional["ServiceAcrConfigurationInfo"] = None,
         **kwargs
     ):
         super(ServicesProperties, self).__init__(**kwargs)
@@ -713,3 +736,4 @@ class ServicesProperties(msrest.serialization.Model):
         self.authentication_configuration = authentication_configuration
         self.cors_configuration = cors_configuration
         self.export_configuration = export_configuration
+        self.acr_configuration = acr_configuration
